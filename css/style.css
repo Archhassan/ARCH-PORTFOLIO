@@ -184,6 +184,9 @@ button { color: inherit; }
 .site-footer { padding: 28px 0; border-top: 1px solid #2e2d29; background: var(--ink); color: #85827b; font-size: 11px; }
 .site-footer .shell { display: flex; justify-content: space-between; gap: 20px; }
 .site-footer p { margin: 0; }
+.footer-contacts { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+.footer-contacts a { color: #aaa79f; font-family: "Manrope", "Segoe UI", Arial, sans-serif; font-size: 10px; transition: color .2s; }
+.footer-contacts a:hover { color: #fff; }
 
 .page-hero { padding: clamp(72px, 10vw, 135px) 0 64px; border-bottom: 1px solid var(--line); }
 .page-hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 60px; align-items: end; }
@@ -418,6 +421,7 @@ button { color: inherit; }
   .panorama-card img { min-height: 0; }
   .video-placeholder { min-height: 280px; }
   .site-footer .shell { display: grid; }
+  .footer-contacts { display: grid; gap: 8px; }
   .contact-form { grid-template-columns: 1fr; }
   .field-wide { grid-column: auto; }
   .studies-grid, .credentials { grid-template-columns: 1fr; }

@@ -198,7 +198,7 @@ function installUtilities() {
   if (!document.querySelector('.whatsapp-float')) {
     const whatsapp = document.createElement('a');
     whatsapp.className = 'whatsapp-float';
-    whatsapp.href = 'https://wa.me/9647000000000';
+    whatsapp.href = 'https://wa.me/9647801028055';
     whatsapp.target = '_blank';
     whatsapp.rel = 'noopener';
     whatsapp.setAttribute('aria-label', 'التواصل عبر واتساب');
@@ -211,11 +211,26 @@ function installUtilities() {
     const data = new FormData(contactForm);
     const subject = encodeURIComponent(`Project inquiry from ${data.get('name') || 'website visitor'}`);
     const body = encodeURIComponent(`Name: ${data.get('name') || ''}\nPhone: ${data.get('phone') || ''}\n\n${data.get('message') || ''}`);
-    window.location.href = `mailto:info@architectural-center.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:hassan6900@gmail.com?subject=${subject}&body=${body}`;
+  });
+}
+
+function installFooterContacts() {
+  document.querySelectorAll('.site-footer .shell').forEach((footer) => {
+    if (footer.querySelector('.footer-contacts')) return;
+    const contacts = document.createElement('nav');
+    contacts.className = 'footer-contacts';
+    contacts.setAttribute('aria-label', 'بيانات اتصال المكتب');
+    contacts.innerHTML = `
+      <a href="https://wa.me/9647801028055" target="_blank" rel="noopener" dir="ltr">+964 780 102 8055</a>
+      <a href="mailto:hassan6900@gmail.com" dir="ltr">hassan6900@gmail.com</a>
+      <a href="https://maps.app.goo.gl/ReywzMyjcvAn9D5c6" target="_blank" rel="noopener" lang="en" dir="ltr">Basra, Iraq</a>`;
+    footer.appendChild(contacts);
   });
 }
 
 installNavigation();
 installSearch();
 installUtilities();
+installFooterContacts();
 document.querySelectorAll('[data-render]').forEach(renderContainer);
