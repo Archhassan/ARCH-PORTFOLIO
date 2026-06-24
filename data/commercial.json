@@ -1,0 +1,30 @@
+[
+  {
+    "title": "مشروع BOC",
+    "subtitle": "BOC Administrative Building",
+    "category": "Commercial",
+    "style": "Corporate Modern",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/project06.jpg",
+    "description": "مبنى إداري بتخطيط مرن وواجهات مظللة وحضور مؤسسي واضح.",
+    "url": "architecture.html#commercial",
+    "pdf": "",
+    "panorama": "",
+    "tags": ["BOC", "office", "commercial", "administrative", "إداري"]
+  },
+  {
+    "title": "المركز التجاري",
+    "subtitle": "Business Center",
+    "category": "Commercial",
+    "style": "Contemporary",
+    "location": "Basra, Iraq",
+    "year": "2025",
+    "image": "images/project05.jpg",
+    "description": "مركز أعمال يجمع سهولة الوصول ومرونة المساحات وكفاءة التشغيل.",
+    "url": "architecture.html#commercial",
+    "pdf": "",
+    "panorama": "",
+    "tags": ["business", "center", "commercial", "workplace", "تجاري"]
+  }
+]

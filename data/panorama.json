@@ -1,0 +1,58 @@
+[
+  {
+    "title": "فيلا الأندلس 360",
+    "subtitle": "Villa Andalus 360",
+    "category": "Villas",
+    "style": "Residential",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/project01.jpg",
+    "description": "جولة تفاعلية لفراغات فيلا الأندلس.",
+    "url": "panorama.html#villas",
+    "pdf": "",
+    "panorama": "panorama/villa-andalus.html",
+    "tags": ["villa", "panorama", "360", "فيلا", "جولة"]
+  },
+  {
+    "title": "غرفة الضيوف 360",
+    "subtitle": "Bedroom 360",
+    "category": "Bedrooms",
+    "style": "Modern Interior",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/project03.jpg",
+    "description": "جولة بانورامية لغرفة نوم ضيوف معاصرة.",
+    "url": "panorama.html#bedrooms",
+    "pdf": "",
+    "panorama": "panorama/bedroom360.html",
+    "tags": ["bedroom", "panorama", "360", "غرفة نوم"]
+  },
+  {
+    "title": "الحمام الرئيسي 360",
+    "subtitle": "Bathroom 360",
+    "category": "Bathrooms",
+    "style": "Modern Interior",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/project02.jpg",
+    "description": "جولة بانورامية لحمام رئيسي بمواد حجرية دافئة.",
+    "url": "panorama.html#bathrooms",
+    "pdf": "",
+    "panorama": "panorama/bathroom360.html",
+    "tags": ["bathroom", "panorama", "360", "حمام"]
+  },
+  {
+    "title": "السينما المنزلية 360",
+    "subtitle": "Cinema Room 360",
+    "category": "Cinema Rooms",
+    "style": "Home Cinema",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/project04.jpg",
+    "description": "جولة بانورامية لغرفة سينما منزلية ومعالجة صوتية متكاملة.",
+    "url": "panorama.html#cinema",
+    "pdf": "",
+    "panorama": "panorama/cinema360.html",
+    "tags": ["cinema", "panorama", "360", "lighting", "acoustic", "سينما"]
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "title": "الحمام الرئيسي",
+    "subtitle": "Master Bath",
+    "category": "Modern Interior",
+    "style": "Modern",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/project02.jpg",
+    "description": "مساحة هادئة بمواد حجرية دافئة وإضاءة متكاملة وتخزين مخفي.",
+    "url": "interior-design.html#modern",
+    "pdf": "",
+    "panorama": "panorama/bathroom360.html",
+    "tags": ["bathroom", "modern", "interior", "حمام", "داخلي"]
+  },
+  {
+    "title": "غرفة الضيوف",
+    "subtitle": "Guest Bedroom",
+    "category": "Modern Interior",
+    "style": "Modern",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/project03.jpg",
+    "description": "غرفة نوم مريحة تعتمد الخشب الفاتح والمنسوجات الهادئة والتفاصيل الدقيقة.",
+    "url": "interior-design.html#modern",
+    "pdf": "",
+    "panorama": "panorama/bedroom360.html",
+    "tags": ["bedroom", "guest", "modern", "غرفة نوم", "ضيوف"]
+  },
+  {
+    "title": "غرفة السينما",
+    "subtitle": "Cinema Room",
+    "category": "Modern Interior",
+    "style": "Home Cinema",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/project04.jpg",
+    "description": "سينما منزلية تجمع الراحة والمعالجة الصوتية والإضاءة السينمائية.",
+    "url": "interior-design.html#modern",
+    "pdf": "",
+    "panorama": "panorama/cinema360.html",
+    "tags": ["cinema", "home theater", "acoustic", "سينما", "صوتيات"]
+  },
+  {
+    "title": "الجناح الرئيسي",
+    "subtitle": "Neo Classical Master Suite",
+    "category": "Neo Classical Interior",
+    "style": "Neo Classical",
+    "location": "Basra, Iraq",
+    "year": "2025",
+    "image": "images/project03.jpg",
+    "description": "تناسب كلاسيكي خفيف مع ألوان دافئة وتفاصيل جدارية محسوبة.",
+    "url": "interior-design.html#neo-classical",
+    "pdf": "",
+    "panorama": "",
+    "tags": ["neo classical", "bedroom", "suite", "نيو كلاسيك", "جناح"]
+  },
+  {
+    "title": "حمام الضيوف",
+    "subtitle": "Neo Classical Guest Bath",
+    "category": "Neo Classical Interior",
+    "style": "Neo Classical",
+    "location": "Basra, Iraq",
+    "year": "2025",
+    "image": "images/project02.jpg",
+    "description": "حمام ضيوف بتفاصيل نيو كلاسيك ومواد دافئة ولمسات معدنية رقيقة.",
+    "url": "interior-design.html#neo-classical",
+    "pdf": "",
+    "panorama": "",
+    "tags": ["neo classical", "bathroom", "guest", "نيو كلاسيك", "حمام"]
+  }
+]

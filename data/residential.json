@@ -1,0 +1,30 @@
+[
+  {
+    "title": "فيلا الأندلس",
+    "subtitle": "Villa Andalus",
+    "category": "Residential",
+    "style": "Modern",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/project01.jpg",
+    "description": "فيلا عائلية معاصرة تعتمد الكتل الحجرية والظلال العميقة والفناء الخاص.",
+    "url": "architecture.html#residential",
+    "pdf": "",
+    "panorama": "panorama/villa-andalus.html",
+    "tags": ["villa", "residential", "modern", "فيلا", "سكني"]
+  },
+  {
+    "title": "منزل الفناء",
+    "subtitle": "Courtyard House",
+    "category": "Residential",
+    "style": "Contemporary",
+    "location": "Basra, Iraq",
+    "year": "2025",
+    "image": "images/project03.jpg",
+    "description": "منزل سكني هادئ يربط الفراغات الداخلية بفناء محمي وإضاءة طبيعية.",
+    "url": "architecture.html#residential",
+    "pdf": "",
+    "panorama": "",
+    "tags": ["house", "courtyard", "residential", "منزل", "فناء"]
+  }
+]

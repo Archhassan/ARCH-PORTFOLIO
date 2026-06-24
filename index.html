@@ -1,251 +1,95 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>المركز المعماري | Portfolio</title>
-  <meta name="description" content="المركز المعماري — معرض أعمال هندسي معماري، بانوراما 360، مخططات، تقارير، واتصال مباشر." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0b1220; --card:#101a2f; --muted:#8ea6c1; --accent:#19c37d; --text:#e9f0f7; --border:rgba(255,255,255,.08);
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;height:100%;}
-    body{font-family:'Cairo',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; background:linear-gradient(180deg,#0b1220,#0b1220 60%,#0f172a); color:var(--text);}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{max-width:1100px;margin:0 auto;padding:24px}
-    header{display:flex;align-items:center;gap:16px;padding:18px 24px;border-bottom:1px solid var(--border);backdrop-filter:blur(6px);position:sticky;top:0;background:rgba(11,18,32,.6);z-index:10}
-    header .brand{display:flex;align-items:center;gap:12px}
-    header .brand img{width:44px;height:44px;object-fit:contain;border-radius:10px;border:1px solid var(--border);background:#0a0f1c}
-    header nav{margin-inline-start:auto;display:flex;gap:18px}
-    header nav a{padding:8px 12px;border-radius:12px;border:1px solid transparent}
-    header nav a:hover{border-color:var(--border);background:rgba(255,255,255,.03)}
-
-    .hero{padding:60px 24px 32px}
-    .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
-    .badge{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:13px}
-    .title{font-size:clamp(28px,5vw,46px);line-height:1.15;margin:14px 0 10px}
-    .subtitle{color:var(--muted);font-size:18px}
-    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
-    .btn{padding:12px 16px;border-radius:14px;border:1px solid var(--border);background:#0f1a30;transition:.2s}
-    .btn.primary{background:linear-gradient(180deg,#1fe28b,#19c37d);color:#06210f;border:none}
-    .btn:hover{transform:translateY(-1px)}
-
-    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
-    .stat{background:var(--card);border:1px solid var(--border);padding:16px;border-radius:16px;text-align:center}
-    .stat .num{font-size:28px;font-weight:800;}
-    .section{padding:34px 24px}
-    .section h2{margin:0 0 16px;font-size:28px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-    .card .cover{aspect-ratio:16/10;background:#0a0f1c url('assets/placeholder-cover.webp') center/cover no-repeat;border-bottom:1px solid var(--border)}
-    .card .body{padding:14px}
-    .card .meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:6px}
-    .card .actions{margin-top:auto;padding:12px 14px;display:flex;gap:10px;border-top:1px solid var(--border)}
-
-    .downloads{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .dl{display:flex;gap:12px;align-items:center;padding:14px;border:1px dashed var(--border);border-radius:14px;background:rgba(255,255,255,.02)}
-
-    footer{border-top:1px solid var(--border);padding:18px 24px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
-    .social{display:flex;gap:10px}
-    .social a{padding:8px 10px;border:1px solid var(--border);border-radius:12px}
-
-    @media (max-width:880px){
-      .hero .wrap{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr;}
-      .downloads{grid-template-columns:1fr}
-      .stats{grid-template-columns:1fr 1fr}
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="المركز المعماري الاستشاري في البصرة — العمارة، التصميم الداخلي، عروض بانوراما 360، والوثائق الهندسية.">
+  <meta name="theme-color" content="#f7f5f1">
+  <title>المركز المعماري الاستشاري | Architectural Center</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="container">
-    <div class="brand">
-      <img src="assets/logo.png" alt="شعار المركز المعماري" />
-      <strong>المركز المعماري</strong>
+  <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="الصفحة الرئيسية">
+        <img src="assets/logo.png" alt="شعار المركز المعماري الاستشاري">
+        <span class="brand-copy"><strong>المركز المعماري الاستشاري</strong><span lang="en" dir="ltr">Architectural Center</span></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">فتح القائمة</span><span></span><span></span></button>
+      <nav id="site-nav" class="site-nav" aria-label="التنقل الرئيسي">
+        <a class="active" href="index.html">الرئيسية</a>
+        <div class="nav-group">
+          <a href="architecture.html">العمارة</a><button class="submenu-toggle" type="button" aria-expanded="false" aria-label="عرض أقسام العمارة">⌄</button>
+          <div class="submenu"><a href="architecture.html#residential">سكني</a><a href="architecture.html#commercial">تجاري</a><a href="architecture.html#government">حكومي</a></div>
+        </div>
+        <div class="nav-group">
+          <a href="interior-design.html">التصميم الداخلي</a><button class="submenu-toggle" type="button" aria-expanded="false" aria-label="عرض أقسام التصميم الداخلي">⌄</button>
+          <div class="submenu"><a href="interior-design.html#modern">داخلي حديث</a><a href="interior-design.html#neo-classical">نيو كلاسيك</a></div>
+        </div>
+        <div class="nav-group">
+          <a href="panorama.html">بانوراما 360</a><button class="submenu-toggle" type="button" aria-expanded="false" aria-label="عرض أقسام البانوراما">⌄</button>
+          <div class="submenu"><a href="panorama.html#villas">فلل</a><a href="panorama.html#bedrooms">غرف نوم</a><a href="panorama.html#bathrooms">حمامات</a><a href="panorama.html#cinema">غرف سينما</a></div>
+        </div>
+        <a href="engineering-documents.html">الوثائق الهندسية</a>
+        <a href="about.html">عن المكتب</a>
+        <a href="contact.html">اتصل بنا</a>
+      </nav>
     </div>
-    <nav>
-      <a href="#projects">المشاريع</a>
-      <a href="#panorama">بانوراما 360</a>
-      <a href="#downloads">ملفات</a>
-      <a href="#contact">تواصل</a>
-    </nav>
   </header>
 
-  <section class="hero">
-    <div class="container wrap">
-      <div>
-        <span class="badge">منصة العرض الرسمي — Netlify</span>
-        <h1 class="title">معرض أعمال هندسي حديث يعرض المشاريع والبانوراما والمستندات في صفحة واحدة</h1>
-        <p class="subtitle">هذا الموقع يُرفع خلال ثوانٍ على Netlify، ويعمل على الجوال والحاسوب. استبدل الصور والروابط فقط لتصبح جاهزة للزبائن والجهات الرسمية.</p>
-        <div class="cta">
-          <a class="btn primary" href="#projects">استعرض المشاريع</a>
-          <a class="btn" href="#downloads">تحميل البروفايل</a>
-          <a class="btn" href="#contact">تواصل معنا</a>
+  <main id="main">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">البصرة · العراق · منذ 2001</p>
+          <h1 lang="en" dir="ltr">Architectural Center</h1>
+          <p class="hero-subtitle">المركز المعماري الاستشاري</p>
+          <div class="disciplines"><span>العمارة</span><span>التصميم الداخلي</span><span>التنفيذ</span><span>عروض 360°</span></div>
+          <div class="button-row"><a class="button button-dark" href="#services">استعرض أعمالنا</a><a class="button button-light" href="contact.html">تواصل معنا</a></div>
         </div>
-        <div class="stats">
-          <div class="stat"><div class="num">+25</div><div>مشروع منجز</div></div>
-          <div class="stat"><div class="num">+10</div><div>بانوراما 360</div></div>
-          <div class="stat"><div class="num">2000 m²</div><div>أكبر مشروع منفذ</div></div>
-        </div>
+        <div class="hero-portrait"><img src="assets/profile.jpg" alt="واجهة معمارية حديثة تمثل أعمال المكتب"><p lang="en" dir="ltr">Architecture shaped by place, purpose, and precision.</p></div>
       </div>
-      <div>
-        <img src="assets/hero-preview.webp" alt="معاينة مشروع" style="border-radius:18px;border:1px solid var(--border)">
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="projects" class="section">
-    <div class="container">
-      <h2>المشاريع المميزة</h2>
-      <div class="grid">
-        <article class="card">
-          <a class="cover" href="projects/project-01/" aria-label="مشروع 1"></a>
-          <div class="body">
-            <strong>مبنى بلدية البصرة — واجهة حديثة</strong>
-            <div class="meta">
-              <span>تصميم معماري</span>
-              <span>2025</span>
-              <span>Basra</span>
-            </div>
-            <p style="color:var(--muted);margin:.4rem 0 0">صور + مخططات PDF + معاينة 3D.</p>
-          </div>
-          <div class="actions">
-            <a class="btn" href="projects/project-01/">فتح المشروع</a>
-            <a class="btn" href="projects/project-01/factsheet.pdf">ورقة بيانات</a>
-          </div>
-        </article>
+    <section class="stats" aria-label="إحصائيات المكتب">
+      <div class="shell stats-grid"><div><strong>25+</strong><span>سنة خبرة</span></div><div><strong>500+</strong><span>تصميم منجز</span></div><div><strong>50+</strong><span>جولة بانورامية</span></div><div><strong>100+</strong><span>عميل</span></div></div>
+    </section>
 
-        <article class="card">
-          <a class="cover" href="projects/project-02/" aria-label="مشروع 2"></a>
-          <div class="body">
-            <strong>مركز خدمي متعدد — Safwan</strong>
-            <div class="meta"><span>تصميم + إشراف</span><span>2024</span></div>
-            <p style="color:var(--muted);margin:.4rem 0 0">ملخص PDF + معرض صور.</p>
-          </div>
-          <div class="actions">
-            <a class="btn" href="projects/project-02/">فتح المشروع</a>
-            <a class="btn" href="projects/project-02/factsheet.pdf">ملف PDF</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <a class="cover" href="projects/project-03/gallery/" aria-label="مشروع 3"></a>
-          <div class="body">
-            <strong>House in Farm — Basra</strong>
-            <div class="meta"><span>واجهة حديثة</span><span>Visuals</span></div>
-            <p style="color:var(--muted);margin:.4rem 0 0">صور ريندر + بانوراما 360.</p>
-          </div>
-          <div class="actions">
-            <a class="btn" href="#panorama">عرض البانوراما</a>
-            <a class="btn" href="projects/project-03/gallery/">معرض الصور</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="panorama" class="section">
-    <div class="container">
-      <h2>بانوراما 360</h2>
-      <div class="grid">
-        <article class="card">
-          <a class="cover" href="panorama/basra-muni/index.html" aria-label="بانوراما"></a>
-          <div class="body">
-            <strong>Municipality Lobby — 360°</strong>
-            <p style="color:var(--muted);margin:.4rem 0 0">تم إعدادها عبر Pano2VR/3DVista — افتح المعاينة التفاعلية.</p>
-          </div>
-          <div class="actions">
-            <a class="btn" href="panorama/basra-muni/index.html" target="_blank">فتح البانوراما</a>
-            <a class="btn" href="panorama/basra-muni/share.txt">رابط المشاركة</a>
-          </div>
-        </article>
-        <article class="card">
-          <a class="cover" href="panorama/house-farm/index.html" aria-label="بانوراما"></a>
-          <div class="body">
-            <strong>House in Farm — 360°</strong>
-            <p style="color:var(--muted);margin:.4rem 0 0">بانوراما داخلية مع نقاط انتقال.</p>
-          </div>
-          <div class="actions">
-            <a class="btn" href="panorama/house-farm/index.html" target="_blank">فتح البانوراما</a>
-            <a class="btn" href="panorama/house-farm/share.txt">رابط المشاركة</a>
-          </div>
-        </article>
-        <article class="card">
-          <a class="cover" href="panorama/ports-one-window/index.html" aria-label="بانوراما"></a>
-          <div class="body">
-            <strong>One-Stop Window — 360°</strong>
-            <p style="color:var(--muted);margin:.4rem 0 0">جولة تعريفية للمشروع.</p>
-          </div>
-          <div class="actions">
-            <a class="btn" href="panorama/ports-one-window/index.html" target="_blank">فتح البانوراما</a>
-            <a class="btn" href="panorama/ports-one-window/share.txt">رابط المشاركة</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="downloads" class="section">
-    <div class="container">
-      <h2>ملفات للتحميل</h2>
-      <div class="downloads">
-        <a class="dl" href="downloads/profile-arch-center.pdf" target="_blank">
-          <img src="assets/pdf.svg" alt="PDF" width="28" height="28"/>
-          <div>
-            <strong>بروفايل المكتب (PDF)</strong>
-            <div style="color:var(--muted);font-size:13px">نسخة مختصرة مع المشاريع الأساسية</div>
-          </div>
-        </a>
-        <a class="dl" href="downloads/boq-sample.xlsx">
-          <img src="assets/xls.svg" alt="XLS" width="28" height="28"/>
-          <div>
-            <strong>نموذج جداول كميات (Excel)</strong>
-            <div style="color:var(--muted);font-size:13px">قابل للتعديل</div>
-          </div>
-        </a>
-        <a class="dl" href="downloads/contact-card.vcf">
-          <img src="assets/vcf.svg" alt="VCF" width="28" height="28"/>
-          <div>
-            <strong>بطاقة تواصل (VCF)</strong>
-            <div style="color:var(--muted);font-size:13px">إضافة سريعة لجهات الاتصال</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>تواصل معنا</h2>
-      <div class="dl" style="margin-top:10px">
-        <div>
-          <div><strong>المهندس الاستشاري حسن عبد الله جاسم — المركز المعماري</strong></div>
-          <div style="color:var(--muted);font-size:14px;margin-top:6px">Basra — العراق</div>
-          <div class="social" style="margin-top:12px">
-            <a href="mailto:info@arch-center.example">بريد إلكتروني</a>
-            <a href="https://wa.me/9647000000000" target="_blank">واتساب</a>
-            <a href="https://maps.google.com" target="_blank">الموقع</a>
-          </div>
+    <section id="services" class="section">
+      <div class="shell">
+        <div class="section-heading"><div><p class="eyebrow">مجالات العمل</p><h2>خدمات المكتب</h2><span class="english-title" lang="en" dir="ltr">Our Practice</span></div><p>حلول تصميم متكاملة من الفكرة الأولى حتى الوثائق التنفيذية والعرض البصري للمشروع.</p></div>
+        <div class="service-grid">
+          <a class="service-card" href="architecture.html"><img src="images/project01.jpg" alt="مشروع فيلا سكنية"><div><span>01</span><h3>العمارة</h3><p lang="en" dir="ltr">Architecture</p></div></a>
+          <a class="service-card" href="interior-design.html"><img src="images/project03.jpg" alt="تصميم داخلي حديث"><div><span>02</span><h3>التصميم الداخلي</h3><p lang="en" dir="ltr">Interior Design</p></div></a>
+          <a class="service-card" href="panorama.html"><img src="images/project04.jpg" alt="عرض بانوراما لغرفة سينما"><div><span>03</span><h3>بانوراما 360</h3><p lang="en" dir="ltr">Panorama 360</p></div></a>
+          <a class="service-card" href="engineering-documents.html"><img src="images/project06.jpg" alt="مشروع مبنى إداري"><div><span>04</span><h3>الوثائق الهندسية</h3><p lang="en" dir="ltr">Engineering Documents</p></div></a>
+          <a class="service-card" href="about.html"><img src="images/project05.jpg" alt="مشروع معماري حكومي"><div><span>05</span><h3>عن المكتب</h3><p lang="en" dir="ltr">About Office</p></div></a>
+          <a class="service-card" href="contact.html"><img src="images/project02.jpg" alt="تفاصيل تصميم داخلي"><div><span>06</span><h3>ابدأ مشروعك</h3><p lang="en" dir="ltr">Contact</p></div></a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="container">
-    <div>© <span id="y"></span> المركز المعماري — جميع الحقوق محفوظة</div>
-    <div class="social">
-      <a href="https://github.com/archhassan" target="_blank">GitHub</a>
-      <a href="https://www.netlify.com" target="_blank">Netlify</a>
-    </div>
-  </footer>
+    <section class="section section-tint">
+      <div class="shell">
+        <div class="section-heading"><div><p class="eyebrow">مختارات</p><h2>مشاريع مميزة</h2><span class="english-title" lang="en" dir="ltr">Selected Projects</span></div><p>الصور الحالية نماذج مؤقتة ويمكن استبدالها لاحقاً بالصور النهائية دون تغيير هيكل الموقع.</p></div>
+        <div class="projects-grid" data-render="featured" data-sources="residential,government,interiors" data-limit="4"></div>
+      </div>
+    </section>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+    <section class="section">
+      <div class="shell">
+        <div class="section-heading"><div><p class="eyebrow">القطاع العام</p><h2>المشاريع الحكومية</h2><span class="english-title" lang="en" dir="ltr">Government Projects</span></div><p>تصميم مبانٍ مدنية ومؤسسية واضحة ومتينة، تراعي سهولة الوصول وكفاءة التشغيل والهوية العامة.</p></div>
+        <article class="government-feature"><img src="images/project05.jpg" alt="تصميم مشروع بلدية سفوان"><div><p class="eyebrow">مشروع حكومي مميز</p><h3>بلدية سفوان</h3><p>مقترح لمبنى مدني معاصر يعتمد المداخل المظللة والحركة الواضحة وواجهة مؤسسية ملائمة لمناخ جنوب العراق.</p><a class="button" href="architecture.html#government">استعرض المشاريع الحكومية</a></div></article>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="shell contact-grid"><div class="contact-copy"><p class="eyebrow">لنتحدث عن مشروعك القادم</p><h2>نحوّل الفكرة إلى مكان.</h2><p>نقدّم خدمات العمارة والتصميم الداخلي والإظهار والوثائق التنفيذية للمشاريع السكنية والتجارية والحكومية.</p></div><div class="contact-details"><img src="assets/logo.png" alt=""><p><strong>المهندس المعماري حسن عبدالله جاسم</strong><br><span lang="en" dir="ltr">Architect Hassan Abdullah Jasim</span></p><p>البصرة — العراق</p><div class="contact-actions"><a class="button button-dark" href="https://wa.me/9647000000000" target="_blank" rel="noopener">واتساب</a><a class="button button-light" href="contact.html">بيانات الاتصال</a></div></div></div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="shell"><p>© <span id="year">2026</span> المركز المعماري الاستشاري</p><p lang="en" dir="ltr">Architectural Center Consulting Engineering Office</p></div></footer>
+  <script src="js/site.js"></script>
 </body>
 </html>

@@ -1,0 +1,30 @@
+[
+  {
+    "title": "بلدية سفوان",
+    "subtitle": "Safwan Municipality",
+    "category": "Government",
+    "style": "Civic Modern",
+    "location": "Safwan, Basra",
+    "year": "2026",
+    "image": "images/project05.jpg",
+    "description": "مبنى مدني معاصر بمداخل مظللة وحركة واضحة وهوية مؤسسية ملائمة للمناخ.",
+    "url": "architecture.html#government",
+    "pdf": "",
+    "panorama": "",
+    "tags": ["government", "municipality", "Safwan", "حكومي", "بلدية"]
+  },
+  {
+    "title": "المركز الإداري",
+    "subtitle": "Administrative Center",
+    "category": "Government",
+    "style": "Institutional",
+    "location": "Basra, Iraq",
+    "year": "2025",
+    "image": "images/project06.jpg",
+    "description": "مركز إداري عام يوازن بين كفاءة الحركة وسهولة الخدمة والمتانة.",
+    "url": "architecture.html#government",
+    "pdf": "",
+    "panorama": "",
+    "tags": ["government", "administration", "public", "إدارة", "مؤسسي"]
+  }
+]
