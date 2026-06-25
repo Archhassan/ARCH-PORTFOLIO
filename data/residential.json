@@ -18,8 +18,8 @@
       "فيلا",
       "سكني"
     ],
-    "status": "published",
-    "featured": false,
+    "status": "hidden",
+    "featured": true,
     "sort_order": 1,
     "gallery": [],
     "video": ""
