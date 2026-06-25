@@ -1,6 +1,6 @@
 const nestedPage = window.location.pathname.includes('/panorama/');
 const rootPrefix = nestedPage ? '../' : '';
-const dataFiles = ['residential', 'commercial', 'government', 'interiors', 'panorama', 'knowledge', 'documents'];
+const dataFiles = ['residential', 'commercial', 'government', 'interiors', 'panorama', 'knowledge', 'documents', 'videos'];
 const dataCache = new Map();
 
 const escapeHTML = (value = '') => String(value).replace(/[&<>"']/g, (character) => ({
@@ -29,7 +29,11 @@ async function loadData(name) {
       if (!response.ok) throw new Error(`Unable to load ${name}.json`);
       return response.json();
     })
-    .then((items) => Array.isArray(items) ? items : []);
+    .then((items) => {
+      if (!Array.isArray(items)) return [];
+      const visibleItems = items.filter(item => !item.status || item.status === "published");
+      return visibleItems;
+    });
   dataCache.set(name, request);
   return request;
 }
@@ -135,7 +139,8 @@ function searchResult(item, source) {
   const primary = item.url || item.panorama || item.pdf;
   const sourceLabels = {
     residential: 'مشروع سكني', commercial: 'مشروع تجاري', government: 'مشروع حكومي',
-    interiors: 'تصميم داخلي', panorama: 'بانوراما 360', knowledge: 'مركز المعرفة', documents: 'مكتبة الوثائق'
+    interiors: 'تصميم داخلي', panorama: 'بانوراما 360', knowledge: 'مركز المعرفة',
+    documents: 'مكتبة الوثائق', videos: 'فيديو'
   };
   return `<article class="search-result">${imageMarkup(item)}<div><span>${sourceLabels[source]}</span>
     <h3>${escapeHTML(item.title)}</h3><small lang="en" dir="ltr">${escapeHTML(item.subtitle)}</small>
