@@ -11,7 +11,18 @@
     "url": "architecture.html#residential",
     "pdf": "",
     "panorama": "panorama/villa-andalus.html",
-    "tags": ["villa", "residential", "modern", "فيلا", "سكني"]
+    "tags": [
+      "villa",
+      "residential",
+      "modern",
+      "فيلا",
+      "سكني"
+    ],
+    "status": "draft",
+    "featured": false,
+    "sort_order": 1,
+    "gallery": [],
+    "video": ""
   },
   {
     "title": "منزل الفناء",
@@ -25,6 +36,17 @@
     "url": "architecture.html#residential",
     "pdf": "",
     "panorama": "",
-    "tags": ["house", "courtyard", "residential", "منزل", "فناء"]
+    "tags": [
+      "house",
+      "courtyard",
+      "residential",
+      "منزل",
+      "فناء"
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 2,
+    "gallery": [],
+    "video": ""
   }
 ]
