@@ -18,7 +18,7 @@
       "فيلا",
       "سكني"
     ],
-    "status": "hidden",
+    "status": "published",
     "featured": true,
     "sort_order": 1,
     "gallery": [],
@@ -43,7 +43,7 @@
       "منزل",
       "فناء"
     ],
-    "status": "hidden",
+    "status": "published",
     "featured": false,
     "sort_order": 2,
     "gallery": [],
