@@ -1,9 +1,160 @@
 [
-  {"title":"ملف تعريف المكتب","subtitle":"Company Profile","category":"Company Profile","style":"Office Document","location":"Basra, Iraq","year":"2026","image":"assets/profile.jpg","description":"نبذة عن المكتب وخدماته وخبراته ومنهجية العمل وبيانات التواصل.","url":"downloads/library/company-profile.pdf","pdf":"downloads/library/company-profile.pdf","panorama":"","tags":["company","profile","office","تعريف","مكتب"]},
-  {"title":"ملف المشاريع","subtitle":"Portfolio","category":"Portfolio","style":"Selected Work","location":"Basra, Iraq","year":"2026","image":"images/project01.jpg","description":"مجموعة مختارة من المشاريع المعمارية والداخلية والحكومية للمكتب.","url":"downloads/library/portfolio.pdf","pdf":"downloads/library/portfolio.pdf","panorama":"","tags":["portfolio","projects","architecture","مشاريع"]},
-  {"title":"المواصفات الفنية","subtitle":"Specifications","category":"Specifications","style":"Technical Document","location":"Basra, Iraq","year":"2026","image":"images/project06.jpg","description":"نموذج منظم لمواصفات المواد والأعمال ومتطلبات الجودة والتنفيذ.","url":"downloads/library/specifications.pdf","pdf":"downloads/library/specifications.pdf","panorama":"","tags":["specifications","technical","materials","مواصفات"]},
-  {"title":"نماذج جداول الكميات","subtitle":"BOQ Samples","category":"BOQ Samples","style":"Quantity Document","location":"Basra, Iraq","year":"2026","image":"images/project05.jpg","description":"نماذج أولية لتنظيم بنود الأعمال والكميات ووحدات القياس والتسعير.","url":"downloads/library/boq-samples.pdf","pdf":"downloads/library/boq-samples.pdf","panorama":"","tags":["BOQ","quantities","cost","كميات","تسعير"]},
-  {"title":"تقارير الإنارة","subtitle":"Lighting Reports","category":"Lighting Reports","style":"Lighting","location":"Basra, Iraq","year":"2026","image":"images/project04.jpg","description":"تقارير مستويات الإضاءة وتوزيع الوحدات والمشاهد وأنظمة التحكم.","url":"downloads/library/lighting-reports.pdf","pdf":"downloads/library/lighting-reports.pdf","panorama":"","tags":["lighting","reports","lux","إنارة","تقارير"]},
-  {"title":"تقارير الصوتيات","subtitle":"Acoustic Reports","category":"Acoustic Reports","style":"Acoustics","location":"Basra, Iraq","year":"2026","image":"images/project03.jpg","description":"تقارير المعالجة والعزل وزمن الارتداد وتوزيع أنظمة الصوت.","url":"downloads/library/acoustic-reports.pdf","pdf":"downloads/library/acoustic-reports.pdf","panorama":"","tags":["acoustic","sound","reports","صوتيات"]},
-  {"title":"العروض التقنية","subtitle":"Technical Presentations","category":"Technical Presentations","style":"Presentation","location":"Basra, Iraq","year":"2026","image":"images/project02.jpg","description":"عروض مختصرة لشرح المقترحات والمواد والأنظمة ونتائج الدراسات.","url":"downloads/library/technical-presentations.pdf","pdf":"downloads/library/technical-presentations.pdf","panorama":"","tags":["presentation","technical","slides","عروض","تقنية"]}
+  {
+    "title": "ملف تعريف المكتب",
+    "subtitle": "Company Profile",
+    "category": "Company Profile",
+    "style": "Office Document",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "assets/profile.jpg",
+    "description": "نبذة عن المكتب وخدماته وخبراته ومنهجية العمل وبيانات التواصل.",
+    "url": "downloads/library/company-profile.pdf",
+    "pdf": "downloads/library/company-profile.pdf",
+    "panorama": "",
+    "tags": [
+      "company",
+      "profile",
+      "office",
+      "تعريف",
+      "مكتب"
+    ]
+  },
+  {
+    "title": "ملف المشاريع",
+    "subtitle": "Portfolio",
+    "category": "Portfolio",
+    "style": "Selected Work",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/project01.jpg",
+    "description": "مجموعة مختارة من المشاريع المعمارية والداخلية والحكومية للمكتب.",
+    "url": "downloads/library/portfolio.pdf",
+    "pdf": "downloads/library/portfolio.pdf",
+    "panorama": "",
+    "tags": [
+      "portfolio",
+      "projects",
+      "architecture",
+      "مشاريع"
+    ]
+  },
+  {
+    "title": "المواصفات الفنية",
+    "subtitle": "Specifications",
+    "category": "Specifications",
+    "style": "Technical Document",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/project06.jpg",
+    "description": "نموذج منظم لمواصفات المواد والأعمال ومتطلبات الجودة والتنفيذ.",
+    "url": "downloads/library/specifications.pdf",
+    "pdf": "downloads/library/specifications.pdf",
+    "panorama": "",
+    "tags": [
+      "specifications",
+      "technical",
+      "materials",
+      "مواصفات"
+    ]
+  },
+  {
+    "title": "نماذج جداول الكميات",
+    "subtitle": "BOQ Samples",
+    "category": "BOQ Samples",
+    "style": "Quantity Document",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/project05.jpg",
+    "description": "نماذج أولية لتنظيم بنود الأعمال والكميات ووحدات القياس والتسعير.",
+    "url": "downloads/library/boq-samples.pdf",
+    "pdf": "downloads/library/boq-samples.pdf",
+    "panorama": "",
+    "tags": [
+      "BOQ",
+      "quantities",
+      "cost",
+      "كميات",
+      "تسعير"
+    ]
+  },
+  {
+    "title": "تقارير الإنارة",
+    "subtitle": "Lighting Reports",
+    "category": "Lighting Reports",
+    "style": "Lighting",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/project04.jpg",
+    "description": "تقارير مستويات الإضاءة وتوزيع الوحدات والمشاهد وأنظمة التحكم.",
+    "url": "downloads/library/lighting-reports.pdf",
+    "pdf": "downloads/library/lighting-reports.pdf",
+    "panorama": "",
+    "tags": [
+      "lighting",
+      "reports",
+      "lux",
+      "إنارة",
+      "تقارير"
+    ]
+  },
+  {
+    "title": "تقارير الصوتيات",
+    "subtitle": "Acoustic Reports",
+    "category": "Acoustic Reports",
+    "style": "Acoustics",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/project03.jpg",
+    "description": "تقارير المعالجة والعزل وزمن الارتداد وتوزيع أنظمة الصوت.",
+    "url": "downloads/library/acoustic-reports.pdf",
+    "pdf": "downloads/library/acoustic-reports.pdf",
+    "panorama": "",
+    "tags": [
+      "acoustic",
+      "sound",
+      "reports",
+      "صوتيات"
+    ]
+  },
+  {
+    "title": "العروض التقنية",
+    "subtitle": "Technical Presentations",
+    "category": "Technical Presentations",
+    "style": "Presentation",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/project02.jpg",
+    "description": "عروض مختصرة لشرح المقترحات والمواد والأنظمة ونتائج الدراسات.",
+    "url": "downloads/library/technical-presentations.pdf",
+    "pdf": "downloads/library/technical-presentations.pdf",
+    "panorama": "",
+    "tags": [
+      "presentation",
+      "technical",
+      "slides",
+      "عروض",
+      "تقنية"
+    ]
+  },
+  {
+    "title": "New folder",
+    "subtitle": "New folder",
+    "category": "Unclassified",
+    "style": "",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/new-folder.jpeg",
+    "description": "Imported office archive item.",
+    "url": "",
+    "pdf": "",
+    "video": "",
+    "panorama": "",
+    "tags": [
+      "imported"
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 999,
+    "gallery": []
+  }
 ]

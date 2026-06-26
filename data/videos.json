@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "title": "New folder",
+    "subtitle": "New folder",
+    "category": "Unclassified",
+    "style": "",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "",
+    "description": "Imported office archive item.",
+    "url": "",
+    "pdf": "",
+    "video": "videos/new-folder.mp4",
+    "panorama": "",
+    "tags": [
+      "imported"
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 999,
+    "gallery": []
+  }
+]
