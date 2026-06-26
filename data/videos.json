@@ -1,13 +1,13 @@
 [
   {
     "title": "New folder",
-    "subtitle": "New folder",
-    "category": "Unclassified",
+    "subtitle": "Tower Video Presentation",
+    "category": "Commercial",
     "style": "",
     "location": "Basra, Iraq",
     "year": "2026",
-    "image": "",
-    "description": "Imported office archive item.",
+    "image": "images/new-folder.png",
+    "description": "تصور معماري لمشروع أبراج بتكوين حديث ومعالجة كتلية معاصرة.\n",
     "url": "",
     "pdf": "",
     "video": "videos/new-folder.mp4",
@@ -15,7 +15,7 @@
     "tags": [
       "imported"
     ],
-    "status": "published",
+    "status": "draft",
     "featured": false,
     "sort_order": 999,
     "gallery": []
