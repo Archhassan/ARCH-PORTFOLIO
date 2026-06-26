@@ -17,7 +17,12 @@
       "office",
       "تعريف",
       "مكتب"
-    ]
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 1,
+    "gallery": [],
+    "video": ""
   },
   {
     "title": "ملف المشاريع",
@@ -36,7 +41,12 @@
       "projects",
       "architecture",
       "مشاريع"
-    ]
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 2,
+    "gallery": [],
+    "video": ""
   },
   {
     "title": "المواصفات الفنية",
@@ -55,7 +65,12 @@
       "technical",
       "materials",
       "مواصفات"
-    ]
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 3,
+    "gallery": [],
+    "video": ""
   },
   {
     "title": "نماذج جداول الكميات",
@@ -75,7 +90,12 @@
       "cost",
       "كميات",
       "تسعير"
-    ]
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 4,
+    "gallery": [],
+    "video": ""
   },
   {
     "title": "تقارير الإنارة",
@@ -95,7 +115,12 @@
       "lux",
       "إنارة",
       "تقارير"
-    ]
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 5,
+    "gallery": [],
+    "video": ""
   },
   {
     "title": "تقارير الصوتيات",
@@ -114,7 +139,12 @@
       "sound",
       "reports",
       "صوتيات"
-    ]
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 6,
+    "gallery": [],
+    "video": ""
   },
   {
     "title": "العروض التقنية",
@@ -134,7 +164,12 @@
       "slides",
       "عروض",
       "تقنية"
-    ]
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 7,
+    "gallery": [],
+    "video": ""
   },
   {
     "title": "New folder",
@@ -152,7 +187,7 @@
     "tags": [
       "imported"
     ],
-    "status": "published",
+    "status": "hidden",
     "featured": false,
     "sort_order": 999,
     "gallery": []
