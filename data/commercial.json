@@ -11,7 +11,18 @@
     "url": "architecture.html#commercial",
     "pdf": "",
     "panorama": "",
-    "tags": ["BOC", "office", "commercial", "administrative", "إداري"]
+    "tags": [
+      "BOC",
+      "office",
+      "commercial",
+      "administrative",
+      "إداري"
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 1,
+    "gallery": [],
+    "video": ""
   },
   {
     "title": "المركز التجاري",
@@ -25,6 +36,43 @@
     "url": "architecture.html#commercial",
     "pdf": "",
     "panorama": "",
-    "tags": ["business", "center", "commercial", "workplace", "تجاري"]
+    "tags": [
+      "business",
+      "center",
+      "commercial",
+      "workplace",
+      "تجاري"
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 2,
+    "gallery": [],
+    "video": ""
+  },
+  {
+    "title": "Tower Concept Study",
+    "subtitle": "Tower Concept Study",
+    "category": "Commercial",
+    "style": "project",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/tower-concept-study-main.png",
+    "gallery": [
+      "images/tower-concept-study-01.png",
+      "images/tower-concept-study-02.png",
+      "images/tower-concept-study-03.png"
+    ],
+    "description": "Quick publish item.",
+    "url": "videos/tower-concept-study-video.mp4",
+    "pdf": "",
+    "panorama": "",
+    "tags": [
+      "quick-publish",
+      "commercial"
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 3,
+    "video": "videos/tower-concept-study-video.mp4"
   }
 ]

@@ -31,6 +31,9 @@ async function loadData(name) {
     })
     .then((items) => {
       if (!Array.isArray(items)) return [];
+      items.forEach(item => {
+        item._section = name;
+      });
       const visibleItems = items.filter(item => !item.status || item.status === "published");
       return visibleItems;
     });
@@ -38,9 +41,56 @@ async function loadData(name) {
   return request;
 }
 
+function asciiSlug(text) {
+  if (!text) return '';
+  return text
+    .toString()
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .replace(/-+/g, '-');
+}
+
 function projectCard(item, index) {
-  const body = `${imageMarkup(item)}<div class="card-copy"><p>${escapeHTML(item.category || item.style)}</p><h3>${escapeHTML(item.title)}</h3><small lang="en" dir="ltr">${escapeHTML(item.subtitle)}</small><span>${String(index + 1).padStart(2, '0')}</span></div>`;
-  return item.url ? `<a class="project-card" href="${escapeHTML(pathFor(item.url))}">${body}</a>` : `<article class="project-card">${body}</article>`;
+  let actions = '';
+  if (item.video) {
+    actions += `<a class="card-action-link" href="${escapeHTML(pathFor(item.video))}" target="_blank" rel="noopener">عرض الفيديو</a>`;
+  }
+  if (item.pdf) {
+    actions += `<a class="card-action-link" href="${escapeHTML(pathFor(item.pdf))}" target="_blank" rel="noopener">ملف PDF</a>`;
+  }
+  if (item.gallery && Array.isArray(item.gallery) && item.gallery.length > 0) {
+    actions += `<a class="card-action-link" href="${escapeHTML(pathFor(item.gallery[0]))}" target="_blank" rel="noopener">معرض الصور</a>`;
+  }
+  if (actions) {
+    actions = `<div class="card-actions-mini">${actions}</div>`;
+  }
+
+  let cardUrl = item.url;
+  const projectSections = ['commercial', 'residential', 'government', 'interiors', 'panorama'];
+  if (item._section && projectSections.includes(item._section)) {
+    const slug = item.slug || item.id || asciiSlug(item.title);
+    if (slug) {
+      cardUrl = `project-detail.html?section=${item._section}&id=${slug}`;
+    } else {
+      cardUrl = `project-detail.html?section=${item._section}&title=${encodeURIComponent(item.title)}`;
+    }
+  }
+  const cardUrlPath = cardUrl ? escapeHTML(pathFor(cardUrl)) : '';
+
+  if (!actions) {
+    const body = `${imageMarkup(item)}<div class="card-copy"><p>${escapeHTML(item.category || item.style)}</p><h3>${escapeHTML(item.title)}</h3><small lang="en" dir="ltr">${escapeHTML(item.subtitle)}</small><span>${String(index + 1).padStart(2, '0')}</span></div>`;
+    return cardUrl ? `<a class="project-card" href="${cardUrlPath}">${body}</a>` : `<article class="project-card">${body}</article>`;
+  }
+
+  const imagePart = cardUrl ? `<a class="project-card-image-link" href="${cardUrlPath}">${imageMarkup(item)}</a>` : imageMarkup(item);
+  const titlePart = cardUrl ? `<a class="project-card-title-link" href="${cardUrlPath}">${escapeHTML(item.title)}</a>` : escapeHTML(item.title);
+
+  const body = `${imagePart}<div class="card-copy"><p>${escapeHTML(item.category || item.style)}</p><h3>${titlePart}</h3><small lang="en" dir="ltr">${escapeHTML(item.subtitle)}</small><span>${String(index + 1).padStart(2, '0')}</span>${actions}</div>`;
+
+  return `<article class="project-card">${body}</article>`;
 }
 
 function panoramaCard(item) {
@@ -239,3 +289,41 @@ installSearch();
 installUtilities();
 installFooterContacts();
 document.querySelectorAll('[data-render]').forEach(renderContainer);
+
+const styleSheet = document.createElement("style");
+styleSheet.textContent = `
+  .card-actions-mini {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .card-action-link {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold, #8f7b4b);
+    border: 1px solid var(--gold, #8f7b4b);
+    border-radius: 4px;
+    text-decoration: none;
+    background: transparent;
+    transition: all 0.2s ease;
+  }
+  .card-action-link:hover {
+    background: var(--gold, #8f7b4b);
+    color: #fff !important;
+  }
+  .project-card h3 a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .project-card h3 a:hover {
+    color: var(--gold, #8f7b4b);
+  }
+  .project-card-image-link {
+    display: block;
+    width: 100%;
+  }
+`;
+document.head.appendChild(styleSheet);
