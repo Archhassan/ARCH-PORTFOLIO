@@ -34,6 +34,8 @@
   const section = params.get('section');
   const id = params.get('id');
   const title = params.get('title');
+  const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const isPreviewMode = params.get('preview') === '1' && isLocalhost;
 
   const mainContainer = document.getElementById('project-detail-content');
 
@@ -79,7 +81,7 @@
 
       // Check publish status
       const status = (item.status || '').toLowerCase().trim();
-      if (status === 'draft' || status === 'hidden') {
+      if ((status === 'draft' || status === 'hidden') && !isPreviewMode) {
         showDraftWarning();
         return;
       }
@@ -213,8 +215,18 @@
       </div>
     `;
 
+    let previewBannerHtml = '';
+    if (isPreviewMode) {
+      previewBannerHtml = `
+        <div class="local-preview-banner" style="background-color: #d9534f; color: #fff; padding: 10px; text-align: center; font-weight: bold; font-size: 14px; position: sticky; top: 0; z-index: 1000; direction: rtl;">
+          ⚠️ معاينة محلية - هذا المشروع غير منشور للعامة (مسودة)
+        </div>
+      `;
+    }
+
     // Combine everything inside main layout
     mainContainer.innerHTML = `
+      ${previewBannerHtml}
       ${heroHtml}
       <div class="shell" style="padding-top: 0; padding-bottom: 80px;">
         ${metaHtml}
