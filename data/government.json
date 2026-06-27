@@ -11,7 +11,13 @@
     "url": "architecture.html#government",
     "pdf": "",
     "panorama": "",
-    "tags": ["government", "municipality", "Safwan", "حكومي", "بلدية"]
+    "tags": [
+      "government",
+      "municipality",
+      "Safwan",
+      "حكومي",
+      "بلدية"
+    ]
   },
   {
     "title": "المركز الإداري",
@@ -25,6 +31,39 @@
     "url": "architecture.html#government",
     "pdf": "",
     "panorama": "",
-    "tags": ["government", "administration", "public", "إدارة", "مؤسسي"]
+    "tags": [
+      "government",
+      "administration",
+      "public",
+      "إدارة",
+      "مؤسسي"
+    ]
+  },
+  {
+    "id": "smart-selection-test-project",
+    "slug": "smart-selection-test-project",
+    "title": "Smart Selection Test Project",
+    "subtitle": "Smart Selection Test Project",
+    "category": "Government Buildings",
+    "style": "Modernist",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/smart-selection-test-project-main.png",
+    "gallery": [
+      "images/smart-selection-test-project-01.png",
+      "images/smart-selection-test-project-02.png"
+    ],
+    "description": "Smart selection test run description.",
+    "url": "project-detail.html?section=government&id=smart-selection-test-project",
+    "pdf": "",
+    "panorama": "",
+    "tags": [
+      "quick-publish",
+      "government"
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 3,
+    "video": ""
   }
 ]
