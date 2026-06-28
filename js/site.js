@@ -24,6 +24,7 @@ const linkMarkup = (href, label, className = '', options = '') => href
 
 async function loadData(name) {
   if (dataCache.has(name)) return dataCache.get(name);
+  const isLocalhost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
   const request = fetch(`${rootPrefix}data/${name}.json`)
     .then((response) => {
       if (!response.ok) throw new Error(`Unable to load ${name}.json`);
@@ -34,7 +35,11 @@ async function loadData(name) {
       items.forEach(item => {
         item._section = name;
       });
-      const visibleItems = items.filter(item => !item.status || item.status === "published");
+      // On localhost: show all items (including drafts) so you can review before publishing
+      // On GitHub Pages: only show published items
+      const visibleItems = isLocalhost
+        ? items
+        : items.filter(item => !item.status || item.status === "published");
       return visibleItems;
     });
   dataCache.set(name, request);
@@ -54,6 +59,14 @@ function asciiSlug(text) {
 }
 
 function projectCard(item, index) {
+  const isLocalhost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+  const isDraft = item.status && item.status !== 'published';
+
+  // Draft badge shown only on localhost
+  const draftBadge = (isLocalhost && isDraft)
+    ? `<span style="position:absolute;top:8px;right:8px;background:#c0392b;color:#fff;font-size:10px;padding:3px 8px;border-radius:4px;font-weight:bold;z-index:10;letter-spacing:0.5px;">مسودة</span>`
+    : '';
+
   let actions = '';
   if (item.video) {
     actions += `<a class="card-action-link" href="${escapeHTML(pathFor(item.video))}" target="_blank" rel="noopener">عرض الفيديو</a>`;
@@ -72,26 +85,31 @@ function projectCard(item, index) {
   const projectSections = ['commercial', 'residential', 'government', 'interiors', 'panorama'];
   if (item._section && projectSections.includes(item._section)) {
     const slug = item.slug || item.id || asciiSlug(item.title);
+    // Draft items on localhost get the preview=1 parameter
+    const previewParam = (isLocalhost && isDraft) ? '&preview=1' : '';
     if (slug) {
-      cardUrl = `project-detail.html?section=${item._section}&id=${slug}`;
+      cardUrl = `project-detail.html?section=${item._section}&id=${slug}${previewParam}`;
     } else {
-      cardUrl = `project-detail.html?section=${item._section}&title=${encodeURIComponent(item.title)}`;
+      cardUrl = `project-detail.html?section=${item._section}&title=${encodeURIComponent(item.title)}${previewParam}`;
     }
   }
   const cardUrlPath = cardUrl ? escapeHTML(pathFor(cardUrl)) : '';
 
   if (!actions) {
-    const body = `${imageMarkup(item)}<div class="card-copy"><p>${escapeHTML(item.category || item.style)}</p><h3>${escapeHTML(item.title)}</h3><small lang="en" dir="ltr">${escapeHTML(item.subtitle)}</small><span>${String(index + 1).padStart(2, '0')}</span></div>`;
-    return cardUrl ? `<a class="project-card" href="${cardUrlPath}">${body}</a>` : `<article class="project-card">${body}</article>`;
+    const body = `${draftBadge}${imageMarkup(item)}<div class="card-copy"><p>${escapeHTML(item.category || item.style)}</p><h3>${escapeHTML(item.title)}</h3><small lang="en" dir="ltr">${escapeHTML(item.subtitle)}</small><span>${String(index + 1).padStart(2, '0')}</span></div>`;
+    const wrapper = cardUrl ? `<a class="project-card" href="${cardUrlPath}">${body}</a>` : `<article class="project-card">${body}</article>`;
+    // Need position:relative on the wrapper for the badge
+    return wrapper.replace('class="project-card"', 'class="project-card" style="position:relative;"');
   }
 
   const imagePart = cardUrl ? `<a class="project-card-image-link" href="${cardUrlPath}">${imageMarkup(item)}</a>` : imageMarkup(item);
   const titlePart = cardUrl ? `<a class="project-card-title-link" href="${cardUrlPath}">${escapeHTML(item.title)}</a>` : escapeHTML(item.title);
 
-  const body = `${imagePart}<div class="card-copy"><p>${escapeHTML(item.category || item.style)}</p><h3>${titlePart}</h3><small lang="en" dir="ltr">${escapeHTML(item.subtitle)}</small><span>${String(index + 1).padStart(2, '0')}</span>${actions}</div>`;
+  const body = `${draftBadge}${imagePart}<div class="card-copy"><p>${escapeHTML(item.category || item.style)}</p><h3>${titlePart}</h3><small lang="en" dir="ltr">${escapeHTML(item.subtitle)}</small><span>${String(index + 1).padStart(2, '0')}</span>${actions}</div>`;
 
-  return `<article class="project-card">${body}</article>`;
+  return `<article class="project-card" style="position:relative;">${body}</article>`;
 }
+
 
 function panoramaCard(item) {
   const categoryIds = { Villas: 'villas', Bedrooms: 'bedrooms', Bathrooms: 'bathrooms', 'Cinema Rooms': 'cinema' };

@@ -74,5 +74,60 @@
     "featured": false,
     "sort_order": 3,
     "video": "videos/tower-concept-study-video.mp4"
+  },
+  {
+    "id": "smart-item",
+    "slug": "smart-item",
+    "title": "بيت الانجلس",
+    "subtitle": "بيت الانجلس",
+    "category": "سكني",
+    "style": "Modern",
+    "location": "Basra, Iraq",
+    "year": "2024",
+    "image": "images/smart-item-main.png",
+    "gallery": [
+      "images/smart-item-01.png",
+      "images/smart-item-02.jpg"
+    ],
+    "description": "Smart selection publish.",
+    "url": "project-detail.html?section=commercial&id=smart-item",
+    "pdf": "",
+    "panorama": "",
+    "tags": [
+      "commercial",
+      "quick-publish"
+    ],
+    "status": "draft",
+    "featured": false,
+    "sort_order": 4,
+    "video": ""
+  },
+  {
+    "id": "222",
+    "slug": "222",
+    "title": "222",
+    "subtitle": "222",
+    "category": "Commercial",
+    "style": "Modern",
+    "location": "Basra, Iraq",
+    "year": "2023",
+    "image": "images/222-main.jpg",
+    "gallery": [
+      "images/222-01.png",
+      "images/222-02.jpg",
+      "images/222-03.jpg"
+    ],
+    "description": "من اعمال مكتب المركز المعماري للاستشاري حسن عبدالله جاسم",
+    "url": "project-detail.html?section=commercial&id=222",
+    "pdf": "",
+    "panorama": "",
+    "tags": [
+      "commercial",
+      "quick-publish"
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 5,
+    "video": ""
   }
 ]

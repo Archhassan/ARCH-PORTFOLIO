@@ -48,5 +48,58 @@
     "sort_order": 2,
     "gallery": [],
     "video": ""
+  },
+  {
+    "id": "the-house-has-a-sleek-and-modern-design-with-clean",
+    "slug": "the-house-has-a-sleek-and-modern-design-with-clean",
+    "title": "The house has a sleek and modern design with clean",
+    "subtitle": "The house has a sleek and modern design with clean",
+    "category": "Residential",
+    "style": "Modern",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/the-house-has-a-sleek-and-modern-design-with-clean-main.jpg",
+    "gallery": [
+      "images/the-house-has-a-sleek-and-modern-design-with-clean-01.png"
+    ],
+    "description": "Quick publish item.",
+    "url": "project-detail.html?section=residential&id=the-house-has-a-sleek-and-modern-design-with-clean",
+    "pdf": "",
+    "panorama": "",
+    "tags": [
+      "quick-publish",
+      "residential"
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 3,
+    "video": ""
+  },
+  {
+    "id": "333",
+    "slug": "333",
+    "title": "333",
+    "subtitle": "333",
+    "category": "Residential",
+    "style": "Modern",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/333-main.jpg",
+    "gallery": [
+      "images/333-01.jpg",
+      "images/333-02.jpg"
+    ],
+    "description": "تصميم بيت في البصرة مساخة 250 متر ارجو عمل استفتاء لاختيار الواجهة المفضلة كاختصاص او للذوق العام",
+    "url": "project-detail.html?section=residential&id=333",
+    "pdf": "",
+    "panorama": "",
+    "tags": [
+      "residential",
+      "quick-publish"
+    ],
+    "status": "draft",
+    "featured": false,
+    "sort_order": 4,
+    "video": ""
   }
 ]
