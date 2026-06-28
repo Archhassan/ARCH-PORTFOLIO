@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="دراسة ثقافية تفاعلية حول لغز الوجود، الضبط الدقيق، النسبة الذهبية، وتعقيد الحياة، ضمن أرشيف المركز المعماري.">
+    <title>لغز الوجود: بين المصادفة والضبط الدقيق</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Lateef&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Amiri', serif;
+            background-color: #fdfbf7;
+            color: #2d2a26;
+            scroll-behavior: smooth;
+        }
+        .section-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        .section-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        .constant-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e5e0d8;
+        }
+        .constant-card:hover {
+            transform: scale(1.03);
+            border-color: #d4af37;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link.active {
+            color: #b8860b;
+            border-right: 4px solid #b8860b;
+        }
+        @media (max-width: 768px) {
+            .chart-container { height: 250px; }
+        }
+        /* Back bar — sits above the article, does not interfere with article styles */
+        .arch-back-bar {
+            position: relative;
+            z-index: 60;
+            background-color: #451a03;
+            color: #fef3c7;
+            font-family: 'Amiri', serif;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .arch-back-bar a {
+            color: #fcd34d;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .arch-back-bar a:hover {
+            color: #ffffff;
+        }
+        .arch-back-bar .sep {
+            opacity: 0.35;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- ══ ARCH-PORTFOLIO: Back bar — standalone article, isolated from portfolio ══ -->
+    <div class="arch-back-bar">
+        <a href="../../index.html">&#8592; العودة إلى الموقع الرئيسي</a>
+        <span class="sep">|</span>
+        <span>المركز المعماري بإدارة الاستشاري حسن عبد الله جاسم</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 right-0 h-full w-16 md:w-64 bg-white/80 backdrop-blur-md border-l border-stone-200 z-50 flex flex-col p-4 shadow-xl" style="top:2.25rem">
+        <div class="hidden md:block text-2xl font-bold mb-10 text-amber-900 text-center">أبعاد الوجود</div>
+        <div class="flex flex-col space-y-6 flex-grow">
+            <a href="#intro" class="nav-link pr-4 py-2 hover:text-amber-700 transition flex items-center gap-3">
+                <span class="text-xl">🏠</span> <span class="hidden md:inline">المقدمة</span>
+            </a>
+            <a href="#cell" class="nav-link pr-4 py-2 hover:text-amber-700 transition flex items-center gap-3">
+                <span class="text-xl">🔬</span> <span class="hidden md:inline">تعقيد الخلية</span>
+            </a>
+            <a href="#probability" class="nav-link pr-4 py-2 hover:text-amber-700 transition flex items-center gap-3">
+                <span class="text-xl">🎲</span> <span class="hidden md:inline">الصدفة والبروتين</span>
+            </a>
+            <a href="#golden" class="nav-link pr-4 py-2 hover:text-amber-700 transition flex items-center gap-3">
+                <span class="text-xl">🌀</span> <span class="hidden md:inline">النسبة الذهبية</span>
+            </a>
+            <a href="#universe" class="nav-link pr-4 py-2 hover:text-amber-700 transition flex items-center gap-3">
+                <span class="text-xl">🌌</span> <span class="hidden md:inline">الثوابت الكونية</span>
+            </a>
+        </div>
+        <!-- Back link repeated inside nav for visibility -->
+        <a href="../../index.html" class="mt-auto text-xs text-stone-400 hover:text-amber-700 transition pr-4 hidden md:block pb-2">← الموقع الرئيسي</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="mr-16 md:mr-64 p-4 md:p-12">
+        
+        <!-- Hero Section -->
+        <section id="intro" class="min-h-screen flex flex-col justify-center items-center text-center max-w-4xl mx-auto section-fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold text-amber-900 mb-6 leading-tight">فرضيّة الصدفة ونشوء الحياة</h1>
+            <p class="text-xl md:text-2xl text-stone-600 mb-8 leading-relaxed">
+                هل كان ظهور الإنسان العاقل مجرد نوع من التصادف؟ أم أن هناك قوانين محكمة تحكم كل تفصيل في الوجود؟ سنقوم بمقاربة هذا الموضوع مقاربة علمية محضة تعتمد على الكيمياء، الرياضيات، وعلم الأحياء.
+            </p>
+            <div class="p-4 bg-amber-50 border-r-4 border-amber-600 italic text-stone-700 text-lg">
+                "دعوة للعقل قبل القلب: لنترك العلم يجيب عن احتمالات الصدفة."
+            </div>
+            <a href="#cell" class="mt-12 animate-bounce text-3xl">↓</a>
+        </section>
+
+        <!-- Section 1: Cell Complexity -->
+        <section id="cell" class="py-20 max-w-5xl mx-auto section-fade-in">
+            <h2 class="text-3xl font-bold text-amber-800 mb-8 border-b-2 border-amber-100 pb-2">أولاً: لغز "أبسط" أشكال الحياة</h2>
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div class="order-2 md:order-1">
+                    <p class="mb-4 text-lg">
+                        يُقال إن الحياة بدأت بخلية "غير معقدة"، لكن الأبحاث الحديثة أثبتت أن أبسط خلية (JCVI-syn3.0) تحتاج إلى حد أدنى من الجينات لا يمكنها العيش بدونه.
+                    </p>
+                    <ul class="space-y-3 text-stone-700">
+                        <li class="flex items-start gap-2"><span>•</span> <strong>473 جينًا:</strong> الحد الأدنى للحياة حسب معهد فنتر.</li>
+                        <li class="flex items-start gap-2"><span>•</span> <strong>400 بروتين:</strong> تعمل بتناغم مذهل كمدينة صغيرة.</li>
+                        <li class="flex items-start gap-2"><span>•</span> <strong>1.1 مليون:</strong> زوج قاعدي من DNA في أبسط بكتيريا.</li>
+                    </ul>
+                </div>
+                <div class="order-1 md:order-2 bg-white p-6 rounded-2xl shadow-sm">
+                    <h3 class="text-center mb-4 font-bold">مقارنة عدد الجينات اللازمة للعمليات الحيوية</h3>
+                    <div class="chart-container">
+                        <canvas id="cellChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 p-4 bg-stone-100 rounded text-sm text-stone-500">
+                مرجع: Hutchison, C. A. et al. (2016). "Design and synthesis of a minimal bacterial genome". Science.
+            </div>
+        </section>
+
+        <!-- Section 2: Probability -->
+        <section id="probability" class="py-20 max-w-5xl mx-auto section-fade-in">
+            <h2 class="text-3xl font-bold text-amber-800 mb-8 border-b-2 border-amber-100 pb-2">ثانياً: لغة الأرقام والاستحالة</h2>
+            <div class="bg-amber-900 text-white p-8 rounded-3xl mb-10 overflow-hidden relative">
+                <div class="relative z-10">
+                    <h3 class="text-2xl font-bold mb-6">احتمال تشكل بروتين وظيفي واحد بالصدفة</h3>
+                    <div class="text-5xl md:text-7xl font-mono text-amber-400 mb-4">1 : 10<sup>77</sup></div>
+                    <p class="text-amber-100 text-lg">
+                        هذا الرقم ضئيل جداً لدرجة أنه يفوق عدد ذرات المجرة. قارنه بعمر الكون الذي يبلغ <span class="text-amber-300">10<sup>17</sup></span> ثانية فقط.
+                    </p>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="p-6 bg-white rounded-xl shadow-sm border-t-4 border-amber-600">
+                    <h4 class="font-bold mb-2">التناظر الكيميائي</h4>
+                    <p class="text-sm">تستخدم الحياة الأحماض اليسارية (L-form) فقط، بينما تنتج الصدفة خليطاً متساوياً. هذا وحده يقلل الاحتمالية بشكل جذري.</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-sm border-t-4 border-amber-600">
+                    <h4 class="font-bold mb-2">الانتقاء الطبيعي</h4>
+                    <p class="text-sm">لا يعمل الانتخاب الطبيعي إلا بعد وجود كائن حي يتكاثر، لذا فهو لا يفسر نشوء الخلية الأولى من مواد خاملة.</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-sm border-t-4 border-amber-600">
+                    <h4 class="font-bold mb-2">تجربة دوغلاس آكس</h4>
+                    <p class="text-sm">أثبتت دراساته أن معظم سلاسل الأحماض الأمينية هي "خردة" بيولوجية، والوظيفي منها نادر جداً.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Golden Ratio -->
+        <section id="golden" class="py-20 max-w-5xl mx-auto section-fade-in">
+            <h2 class="text-3xl font-bold text-amber-800 mb-8 border-b-2 border-amber-100 pb-2">ثالثاً: النسبة الذهبية - بصمة النظام</h2>
+            <p class="mb-10 text-lg">
+                النسبة الذهبية (1.618) ليست مجرد رقم جمالي، بل هي حل رياضي أمثل لتقليل التزاحم وتعظيم كفاءة النمو في الطبيعة.
+            </p>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="bg-stone-900 p-4 rounded-xl flex flex-col items-center">
+                    <canvas id="goldenCanvas" width="400" height="400" class="max-w-full"></canvas>
+                    <button id="drawGolden" class="mt-4 px-6 py-2 bg-amber-600 text-white rounded-full hover:bg-amber-700 transition">توليد دوامة فيبوناتشي</button>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-amber-900 mb-4">أين نراها؟</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-800">1</span>
+                            <span><strong>بذور دوار الشمس:</strong> توزيع حلزوني يتبع الزاوية الذهبية (137.5°).</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-800">2</span>
+                            <span><strong>أكواز الصنوبر:</strong> لوالب مزدوجة تتوافق مع أعداد فيبوناتشي.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-800">3</span>
+                            <span><strong>قوانين النمو:</strong> كفاءة في التعرض للضوء وتقليل الظل المتداخل.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Physical Constants -->
+        <section id="universe" class="py-20 max-w-5xl mx-auto section-fade-in">
+            <h2 class="text-3xl font-bold text-amber-800 mb-8 border-b-2 border-amber-100 pb-2">رابعاً: الضبط الدقيق للكون</h2>
+            <p class="mb-8 text-lg">
+                يتحكم في كوننا 8 ثوابت فيزيائية لو تغير أحدها بمقدار جزء من مليار مليار، لما وجدنا نحن هنا اليوم. اضغط على الثوابت لاستكشافها:
+            </p>
+            <div id="constantsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Cards injected via JS -->
+            </div>
+            
+            <div id="constantDetail" class="mt-8 p-6 bg-white border border-amber-200 rounded-2xl hidden shadow-lg animate-pulse">
+                <h3 id="detailTitle" class="text-2xl font-bold text-amber-900 mb-2"></h3>
+                <p id="detailDesc" class="text-stone-700 leading-relaxed"></p>
+                <div class="mt-4 p-3 bg-red-50 text-red-800 text-sm rounded border border-red-100">
+                    <strong>النتيجة الكارثية: </strong> <span id="detailDisaster"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer / References -->
+        <footer class="mt-20 py-12 border-t border-stone-200 text-stone-500">
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-lg font-bold mb-6 text-stone-800">المصادر والمراجع العلمية</h3>
+                <div class="grid md:grid-cols-2 gap-4 text-xs">
+                    <div>• Hutchison et al. (2016) - Science (Minimal Genome)</div>
+                    <div>• Douglas Axe (2004) - Journal of Molecular Biology</div>
+                    <div>• Stephen Hawking - A Brief History of Time</div>
+                    <div>• Martin Rees - Just Six Numbers</div>
+                    <div>• Ulf-G. Meißner - Anthropic nuclear physics</div>
+                    <div>• Planck Collaboration (2018) - Cosmological parameters</div>
+                </div>
+                <div class="mt-12 text-center text-sm border-t pt-8">
+                    <p>دراسة ثقافية · أرشيف <a href="../../index.html" class="text-amber-700 hover:text-amber-900 transition">المركز المعماري بإدارة الاستشاري حسن عبد الله جاسم</a></p>
+                    <p class="mt-2 text-xs text-stone-400">&copy; 2024 لغز الوجود | تجربة تفاعلية مبنية على بيانات علمية موثقة</p>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Data Structures
+        const constants = [
+            { id: 'N', name: 'الجاذبية vs الكهرباء', value: '10^36', desc: 'النسبة بين قوة الجذب والقوة الكهرومغناطيسية.', disaster: 'لو زادت الجاذبية قليلاً، لانطفأت النجوم بسرعة ولم يتوفر وقت للحياة.' },
+            { id: 'eps', name: 'كفاءة النجوم', value: '0.007', desc: 'كفاءة تحويل الهيدروجين إلى هيليوم.', disaster: 'لو كانت 0.006 لبقي الكون هيدروجيناً فقط، ولو كانت 0.008 لاختفى الهيدروجين فوراً.' },
+            { id: 'omega', name: 'كثافة المادة', value: '1.0', desc: 'توازن كثافة الكون مع سرعة التمدد.', disaster: 'انحراف 1 من 10^60 كان سيؤدي لسحق الكون أو تشتته تماماً.' },
+            { id: 'lambda', name: 'الثابت الكوني', value: '10^-120', desc: 'قوة الطاقة المظلمة التي تدفع الكون للتمدد.', disaster: 'لو زاد قليلاً لتفككت المجرات قبل أن تتشكل.' },
+            { id: 'Q', name: 'التموجات الأولية', value: '10^-5', desc: 'نسبة عدم التجانس في الكون الباكر.', disaster: 'لو صغرت لكان الكون غازاً مظلماً، ولو كبرت لتحول لثقوب سوداء فقط.' },
+            { id: 'D', name: 'أبعاد المكان', value: '3', desc: 'عدد الأبعاد المكانية التي نعيش فيها.', disaster: 'في الأبعاد الأربعة لا توجد مدارات كوكبية مستقرة.' },
+            { id: 'ratio', name: 'بروتون : إلكترون', value: '1836', desc: 'النسبة الدقيقة بين كتلة البروتون والإلكترون.', disaster: 'أي تغير يمنع استقرار الذرات وتكوين الروابط الكيميائية.' },
+            { id: 'G', name: 'ثابت الجذب العام', value: '6.67e-11', desc: 'القوة التي تجمع الغبار الكوني لصنع الكواكب.', disaster: 'أي انحراف يمنع تشكل النجوم أو يجعلها تنهار بعنف.' }
+        ];
+
+        // Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            initCharts();
+            renderConstants();
+            setupScrollSpy();
+            initGoldenCanvas();
+            observeSections();
+        });
+
+        // Charts
+        function initCharts() {
+            const ctx = document.getElementById('cellChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['جينات الحد الأدنى', 'جينات مفقودة للتعقيد', 'جينات بكتيريا نموذجية'],
+                    datasets: [{
+                        data: [473, 527, 4000],
+                        backgroundColor: ['#d4af37', '#e5e0d8', '#78350f'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { font: { family: 'Amiri' } } }
+                    }
+                }
+            });
+        }
+
+        // Render Constant Cards
+        function renderConstants() {
+            const grid = document.getElementById('constantsGrid');
+            constants.forEach(c => {
+                const card = document.createElement('div');
+                card.className = 'constant-card bg-white p-4 rounded-xl cursor-pointer text-center';
+                card.innerHTML = `
+                    <div class="text-amber-600 font-bold text-xl mb-1">${c.id}</div>
+                    <div class="text-sm font-bold text-stone-800">${c.name}</div>
+                    <div class="text-xs text-stone-400 mt-2">${c.value}</div>
+                `;
+                card.onclick = () => showConstantDetail(c);
+                grid.appendChild(card);
+            });
+        }
+
+        function showConstantDetail(c) {
+            const detail = document.getElementById('constantDetail');
+            detail.classList.remove('hidden');
+            document.getElementById('detailTitle').innerText = `${c.name} (${c.id})`;
+            document.getElementById('detailDesc').innerText = c.desc;
+            document.getElementById('detailDisaster').innerText = c.disaster;
+            detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Scroll Logic
+        function observeSections() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.section-fade-in').forEach(s => observer.observe(s));
+        }
+
+        function setupScrollSpy() {
+            window.addEventListener('scroll', () => {
+                let current = '';
+                const sections = document.querySelectorAll('section');
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // Golden Ratio Spiral (Canvas)
+        function initGoldenCanvas() {
+            const canvas = document.getElementById('goldenCanvas');
+            const ctx = canvas.getContext('2d');
+            const btn = document.getElementById('drawGolden');
+
+            btn.onclick = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawSpiral(ctx, canvas.width / 2, canvas.height / 2);
+            };
+
+            function drawSpiral(ctx, cx, cy) {
+                let angle = 0;
+                let r = 0;
+                ctx.beginPath();
+                ctx.strokeStyle = '#d4af37';
+                ctx.lineWidth = 2;
+                
+                for (let i = 0; i < 1000; i++) {
+                    angle = 0.1 * i;
+                    r = 0.5 * angle * 1.618;
+                    let x = cx + r * Math.cos(angle);
+                    let y = cy + r * Math.sin(angle);
+                    ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                for (let i = 0; i < 200; i++) {
+                    let a = i * 137.5 * (Math.PI / 180);
+                    let dist = 4 * Math.sqrt(i);
+                    let x = cx + dist * Math.cos(a);
+                    let y = cy + dist * Math.sin(a);
+                    ctx.fillStyle = '#f59e0b';
+                    ctx.beginPath();
+                    ctx.arc(x, y, 2, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+        }
+    </script>
+</body>
+</html>
