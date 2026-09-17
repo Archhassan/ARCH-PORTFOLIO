@@ -11,7 +11,13 @@
     "url": "interior-design.html#modern",
     "pdf": "",
     "panorama": "panorama/bathroom360.html",
-    "tags": ["bathroom", "modern", "interior", "حمام", "داخلي"]
+    "tags": [
+      "bathroom",
+      "modern",
+      "interior",
+      "حمام",
+      "داخلي"
+    ]
   },
   {
     "title": "غرفة الضيوف",
@@ -25,7 +31,13 @@
     "url": "interior-design.html#modern",
     "pdf": "",
     "panorama": "panorama/bedroom360.html",
-    "tags": ["bedroom", "guest", "modern", "غرفة نوم", "ضيوف"]
+    "tags": [
+      "bedroom",
+      "guest",
+      "modern",
+      "غرفة نوم",
+      "ضيوف"
+    ]
   },
   {
     "title": "غرفة السينما",
@@ -39,7 +51,13 @@
     "url": "interior-design.html#modern",
     "pdf": "",
     "panorama": "panorama/cinema360.html",
-    "tags": ["cinema", "home theater", "acoustic", "سينما", "صوتيات"]
+    "tags": [
+      "cinema",
+      "home theater",
+      "acoustic",
+      "سينما",
+      "صوتيات"
+    ]
   },
   {
     "title": "الجناح الرئيسي",
@@ -53,7 +71,13 @@
     "url": "interior-design.html#neo-classical",
     "pdf": "",
     "panorama": "",
-    "tags": ["neo classical", "bedroom", "suite", "نيو كلاسيك", "جناح"]
+    "tags": [
+      "neo classical",
+      "bedroom",
+      "suite",
+      "نيو كلاسيك",
+      "جناح"
+    ]
   },
   {
     "title": "حمام الضيوف",
@@ -67,6 +91,16 @@
     "url": "interior-design.html#neo-classical",
     "pdf": "",
     "panorama": "",
-    "tags": ["neo classical", "bathroom", "guest", "نيو كلاسيك", "حمام"]
+    "tags": [
+      "neo classical",
+      "bathroom",
+      "guest",
+      "نيو كلاسيك",
+      "حمام"
+    ],
+    "id": "project-20260915-105940-3755",
+    "slug": "project-20260915-105940-3755",
+    "sort_order": 5,
+    "gallery": []
   }
 ]

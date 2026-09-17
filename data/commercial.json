@@ -53,15 +53,11 @@
     "title": "Tower Concept Study",
     "subtitle": "Tower Concept Study",
     "category": "Commercial",
-    "style": "project",
+    "style": "video",
     "location": "Basra, Iraq",
     "year": "2026",
     "image": "images/tower-concept-study-main.png",
-    "gallery": [
-      "images/tower-concept-study-01.png",
-      "images/tower-concept-study-02.png",
-      "images/tower-concept-study-03.png"
-    ],
+    "gallery": [],
     "description": "Quick publish item.",
     "url": "videos/tower-concept-study-video.mp4",
     "pdf": "",
@@ -70,37 +66,14 @@
       "quick-publish",
       "commercial"
     ],
-    "status": "published",
-    "featured": false,
-    "sort_order": 3,
-    "video": "videos/tower-concept-study-video.mp4"
-  },
-  {
-    "id": "smart-item",
-    "slug": "smart-item",
-    "title": "بيت الانجلس",
-    "subtitle": "بيت الانجلس",
-    "category": "سكني",
-    "style": "Modern",
-    "location": "Basra, Iraq",
-    "year": "2024",
-    "image": "images/smart-item-main.png",
-    "gallery": [
-      "images/smart-item-01.png",
-      "images/smart-item-02.jpg"
-    ],
-    "description": "Smart selection publish.",
-    "url": "project-detail.html?section=commercial&id=smart-item",
-    "pdf": "",
-    "panorama": "",
-    "tags": [
-      "commercial",
-      "quick-publish"
-    ],
     "status": "draft",
     "featured": false,
-    "sort_order": 4,
-    "video": ""
+    "sort_order": 3,
+    "video": "videos/tower-concept-study-video.mp4",
+    "id": "tower-concept-study",
+    "slug": "tower-concept-study",
+    "thumbnail": "images/tower-concept-study-main.png",
+    "type": "video"
   },
   {
     "id": "222",

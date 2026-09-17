@@ -101,5 +101,62 @@
     "featured": false,
     "sort_order": 4,
     "video": ""
+  },
+  {
+    "id": "media-20260912-225029",
+    "slug": "media-20260912-225029",
+    "title": "تصاميم ديكور بيت الطويسة",
+    "subtitle": "",
+    "category": "Residential",
+    "style": "heyzine",
+    "location": "Basra, Iraq",
+    "year": "2026",
+    "image": "images/imagesreport-cover-3.jpg",
+    "thumbnail": "images/imagesreport-cover-3.jpg",
+    "type": "heyzine",
+    "description": "تقرير وعرض تصاميم ديكور بيت الطويسة",
+    "url": "https://heyzine.com/flip-book/6f533560e8.html",
+    "pdf": "downloads/library/engineering-luminous-reality.pdf",
+    "video": "",
+    "panorama": "",
+    "gallery": [],
+    "tags": [
+      "interior",
+      "residential",
+      "pdf"
+    ],
+    "status": "draft",
+    "featured": false,
+    "sort_order": 6
+  },
+  {
+    "id": "viewport01",
+    "slug": "viewport01",
+    "title": "Viewport01",
+    "subtitle": "Viewport01",
+    "category": "Residential",
+    "style": "gallery",
+    "location": "Basra, Iraq",
+    "year": "2016",
+    "image": "images/viewport01-main.jpg",
+    "gallery": [
+      "images/viewport01-01.png",
+      "images/viewport01-02.jpg",
+      "images/viewport01-03.png"
+    ],
+    "description": "تصميم حدائق و فلة ولاندسكيب وديوان",
+    "url": "project-detail.html?section=residential&id=viewport01",
+    "pdf": "",
+    "panorama": "",
+    "tags": [
+      "residential",
+      "quick-publish"
+    ],
+    "status": "published",
+    "featured": false,
+    "sort_order": 7,
+    "video": "",
+    "thumbnail": "images/viewport01-main.jpg",
+    "type": "gallery"
   }
 ]
