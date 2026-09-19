@@ -127,7 +127,13 @@
     ],
     "status": "draft",
     "featured": false,
-    "sort_order": 6
+    "sort_order": 6,
+    "asset_ids": {
+      "image": "asset-image-20260917-154725-91b5",
+      "thumbnail": "asset-image-20260917-154725-91b5",
+      "pdf": "asset-pdf-20260917-154725-3aba",
+      "heyzine": "asset-heyzine-20260917-154725-b6dd"
+    }
   },
   {
     "id": "viewport01",

@@ -1,0 +1,16 @@
+[
+  {
+    "placement_id": "placement-20260918-052030-3738",
+    "asset_id": "asset-pdf-20260917-154725-3aba",
+    "destination": {
+      "type": "knowledge",
+      "section": "lighting"
+    },
+    "display_title": "Residential Lighting Study",
+    "description": "",
+    "thumbnail": "",
+    "sort_order": 0,
+    "featured": false,
+    "visibility": "draft"
+  }
+]

@@ -2,6 +2,9 @@ const nestedPage = window.location.pathname.includes('/panorama/');
 const rootPrefix = nestedPage ? '../' : '';
 const dataFiles = ['residential', 'commercial', 'government', 'interiors', 'panorama', 'knowledge', 'documents', 'videos'];
 const dataCache = new Map();
+const rawDataCache = new Map();
+let placementsCache = null;
+let runtimeAssetIndexCache = null;
 
 const escapeHTML = (value = '') => String(value).replace(/[&<>"']/g, (character) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
@@ -620,15 +623,9 @@ const linkMarkup = (href, label, className = '', options = '') => href
 
 async function loadData(name) {
   if (dataCache.has(name)) return dataCache.get(name);
-  const isLocalhost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
-  const request = fetch(`${rootPrefix}data/${name}.json`)
-    .then((response) => {
-      if (!response.ok) throw new Error(`Unable to load ${name}.json`);
-      return response.json();
-    })
-    .then((items) => {
-      if (!Array.isArray(items)) return [];
-      const normalizedItems = items.map((item, index) => normalizeContentItem(item, name, index));
+  const isLocalhost = isRuntimeLocalhost();
+  const request = loadRawData(name)
+    .then((normalizedItems) => {
       // On localhost: show all items (including drafts) so you can review before publishing
       // On GitHub Pages: only show published items
       const visibleItems = isLocalhost
@@ -720,6 +717,21 @@ function panoramaCard(item) {
 }
 
 function knowledgeCard(item) {
+  if (item._placement) {
+    const mediaType = detectMediaType(item, 'knowledge');
+    const target = getMediaTarget(item, mediaType, 'knowledge');
+    const viewerOptions = mediaViewerAttributes(item, mediaType, 'knowledge', { target });
+    const draftBadge = isRuntimeLocalhost() && item.status !== 'published'
+      ? `<span class="card-type">${escapeHTML(item.status)}</span>`
+      : '';
+    return `<article class="knowledge-card">${imageMarkup(item)}<div>
+      <span class="card-type">Knowledge</span>${draftBadge}
+      <h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.description)}</p>
+      <small lang="en" dir="ltr">${escapeHTML(item.subtitle)}</small>
+      <div class="card-actions">
+        ${linkMarkup(target, 'فتح المحتوى', '', `${linkOptionsForMedia(item, mediaType, 'knowledge')} ${viewerOptions}`)}
+      </div></div></article>`;
+  }
   const previewTarget = hasGallery(item) ? item.gallery[0] : getThumbnail(item);
   const previewType = hasGallery(item) ? 'gallery' : '';
   const pdfType = item.pdf ? 'pdf' : detectMediaType(item, 'knowledge');
@@ -765,6 +777,8 @@ async function renderContainer(container) {
       items = await getAggregatedAssets('panorama', items);
     } else if (type === 'videos' && sourceNames.includes('videos')) {
       items = await getAggregatedAssets('videos', items);
+    } else if (type === 'knowledge' && sourceNames.includes('knowledge')) {
+      items = await getKnowledgePlacementItems(items);
     }
     if (container.dataset.category) items = items.filter((item) => item.category === container.dataset.category);
     if (container.dataset.limit) items = items.slice(0, Number(container.dataset.limit));
@@ -840,6 +854,344 @@ function searchableText(item) {
     .filter(Boolean).join(' ').toLocaleLowerCase();
 }
 
+const knowledgePlacementSections = {
+  lighting: 'Lighting Studies',
+  acoustics: 'Acoustics Studies',
+  plumbing: 'Plumbing / Sanitary Studies',
+  hvac: 'HVAC Studies',
+  bim: 'BIM & Revit',
+  certificates: 'Certificates & Credentials',
+  articles: 'Technical Articles'
+};
+
+function isRuntimeLocalhost() {
+  return ['localhost', '127.0.0.1'].includes(window.location.hostname);
+}
+
+async function loadRawData(name = '') {
+  if (rawDataCache.has(name)) return rawDataCache.get(name);
+  const request = fetch(`${rootPrefix}data/${name}.json`)
+    .then((response) => {
+      if (!response.ok) throw new Error(`Unable to load ${name}.json`);
+      return response.json();
+    })
+    .then((items) => Array.isArray(items)
+      ? items.map((item, index) => normalizeContentItem(item, name, index))
+      : []);
+  rawDataCache.set(name, request);
+  return request;
+}
+
+async function getPlacements() {
+  if (placementsCache) return placementsCache;
+  placementsCache = fetch(`${rootPrefix}data/placements.json`)
+    .then((response) => {
+      if (response.status === 404) return [];
+      if (!response.ok) throw new Error('Unable to load placements.json');
+      return response.json();
+    })
+    .then((items) => Array.isArray(items) ? items.filter((item) => item && typeof item === 'object') : [])
+    .catch((error) => {
+      console.warn('[Placements] Optional placements.json was not loaded.', error);
+      return [];
+    });
+  return placementsCache;
+}
+
+function itemPersistentAssetEntries(item = {}) {
+  const assetIds = item.asset_ids && typeof item.asset_ids === 'object' ? item.asset_ids : {};
+  const entries = [];
+  const add = (assetId, type, target, field) => {
+    const id = String(assetId || '').trim();
+    const value = String(target || '').trim();
+    if (!id || !value) return;
+    entries.push({ asset_id: id, type: normalizeMediaType(type) || type, target: value, field });
+  };
+
+  add(assetIds.image, 'image', item.image, 'image');
+  add(assetIds.thumbnail, 'image', item.thumbnail, 'thumbnail');
+  add(assetIds.pdf, 'pdf', item.pdf, 'pdf');
+  add(assetIds.video, 'video', item.video, 'video');
+  add(assetIds.panorama, 'panorama', item.panorama, 'panorama');
+  add(assetIds.pano2vr, 'pano2vr', item.panorama || item.pano2vr, 'pano2vr');
+  add(assetIds.heyzine, 'heyzine', item.url, 'heyzine');
+  add(assetIds.external, 'external', item.url, 'external');
+
+  const galleryIds = Array.isArray(assetIds.gallery) ? assetIds.gallery : [];
+  galleryIds.forEach((entry) => {
+    if (!entry || typeof entry !== 'object') return;
+    add(entry.asset_id, 'gallery', entry.target, 'gallery');
+  });
+  return entries;
+}
+
+async function buildRuntimeAssetIndex(options = {}) {
+  if (!options.force && runtimeAssetIndexCache) return runtimeAssetIndexCache;
+  const sources = options.sources || dataFiles;
+  const collections = options.collections || await Promise.all(
+    sources.map(async (source) => ({ source, items: await loadRawData(source).catch(() => []) }))
+  );
+  const index = new Map();
+
+  collections.forEach(({ source, items }) => {
+    items.forEach((item, itemIndex) => {
+      const normalized = item._identity ? item : normalizeContentItem(item, source, itemIndex);
+      itemPersistentAssetEntries(normalized).forEach((entry) => {
+        const targetKey = normalizeAssetTarget(entry.target);
+        if (!targetKey) return;
+        const owner = {
+          section: source,
+          item_id: normalized.id || normalized.slug || normalized._identity?.key || '',
+          field: entry.field,
+          title: normalized.title || normalized.subtitle || '',
+          description: normalized.description || '',
+          thumbnail: getThumbnail(normalized),
+          status: normalizeStatus(normalized.status),
+          viewer_style: entry.type === 'pdf' ? getPdfViewerStyle(normalized) : '',
+          source_item: normalized
+        };
+        const existing = index.get(entry.asset_id) || {
+          asset_id: entry.asset_id,
+          type: entry.type,
+          target: entry.target,
+          normalized_target: targetKey,
+          owners: [],
+          conflict: false,
+          targets: new Map()
+        };
+        existing.targets.set(targetKey, entry.target);
+        existing.owners.push(owner);
+        if (existing.targets.size > 1) existing.conflict = true;
+        index.set(entry.asset_id, existing);
+      });
+    });
+  });
+
+  index.forEach((asset) => {
+    if (asset.conflict) {
+      console.warn(`[Placements] ASSET RESOLUTION CONFLICT for ${asset.asset_id}`, [...asset.targets.values()]);
+    }
+  });
+  if (!options.force && !options.collections) runtimeAssetIndexCache = index;
+  return index;
+}
+
+async function resolveAssetByIdRuntime(assetId = '', options = {}) {
+  const id = String(assetId || '').trim();
+  if (!id) return null;
+  const index = options.index || await buildRuntimeAssetIndex(options);
+  const asset = index.get(id);
+  if (!asset) {
+    console.warn(`[Placements] Unknown asset_id ignored: ${id}`);
+    return null;
+  }
+  if (asset.conflict || asset.targets.size !== 1) {
+    console.warn(`[Placements] Conflicting asset_id ignored: ${id}`);
+    return null;
+  }
+  return {
+    asset_id: asset.asset_id,
+    type: asset.type,
+    target: asset.target,
+    normalized_target: asset.normalized_target,
+    owners: asset.owners,
+    owner: asset.owners[0] || null,
+    viewer_style: asset.owners.find((owner) => owner.viewer_style)?.viewer_style || ''
+  };
+}
+
+function placementIsVisible(placement = {}, localMode = isRuntimeLocalhost()) {
+  return localMode ? true : placement.visibility === 'published';
+}
+
+function isPlainObject(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+  return Object.prototype.toString.call(value) === '[object Object]';
+}
+
+function isSafePlacementThumbnail(value = '') {
+  if (!value) return true;
+  const raw = String(value).trim();
+  let decoded = raw;
+  try {
+    decoded = decodeURIComponent(raw);
+  } catch (error) {
+    return false;
+  }
+  const normalized = decoded.replace(/\\/g, '/');
+  const lower = normalized.toLowerCase();
+  if (/^[a-z]:\//i.test(normalized) || normalized.startsWith('//')) return false;
+  if (/^file:\/\//i.test(normalized)) return false;
+  if (/(^|\/)\.\.(\/|$)/.test(normalized)) return false;
+  if (/(^|\/)(_imports|_publish_inbox)(\/|$)/i.test(lower)) return false;
+  return /^(https?:\/\/|[^:]+$)/i.test(normalized);
+}
+
+function validatePlacementForRuntime(placement) {
+  const invalid = (reason, placementId = '') => {
+    const label = typeof placementId === 'string' && placementId.trim()
+      ? ` ${placementId.trim()}`
+      : '';
+    console.warn(`[Placements] Skipping invalid placement${label}: ${reason}`);
+    return null;
+  };
+
+  if (!isPlainObject(placement)) return invalid('placement must be a plain object');
+
+  const placementId = placement.placement_id;
+  if (typeof placementId !== 'string' || !placementId.trim()) {
+    return invalid('invalid placement_id', placementId);
+  }
+  const normalizedPlacementId = placementId.trim();
+
+  if (typeof placement.asset_id !== 'string' || !placement.asset_id.trim()) {
+    return invalid('invalid asset_id', normalizedPlacementId);
+  }
+  if (!isPlainObject(placement.destination)) {
+    return invalid('invalid destination', normalizedPlacementId);
+  }
+  if (typeof placement.destination.type !== 'string' || !placement.destination.type.trim()) {
+    return invalid('invalid destination.type', normalizedPlacementId);
+  }
+
+  const destinationType = placement.destination.type.trim().toLowerCase();
+  const sectionValue = placement.destination.section ?? placement.destination.category;
+  if (typeof sectionValue !== 'string' || !sectionValue.trim()) {
+    return invalid('invalid destination.section', normalizedPlacementId);
+  }
+  const destinationSection = sectionValue.trim().toLowerCase();
+  if (destinationType !== 'knowledge') {
+    return invalid(`unsupported destination.type ${destinationType}`, normalizedPlacementId);
+  }
+  if (!knowledgePlacementSections[destinationSection]) {
+    return invalid(`unknown Knowledge destination ${destinationSection}`, normalizedPlacementId);
+  }
+
+  const stringFields = ['display_title', 'description', 'thumbnail'];
+  for (const field of stringFields) {
+    if (placement[field] !== undefined && typeof placement[field] !== 'string') {
+      return invalid(`invalid ${field}`, normalizedPlacementId);
+    }
+  }
+
+  const thumbnail = String(placement.thumbnail || '').trim();
+  if (!isSafePlacementThumbnail(thumbnail)) {
+    return invalid('unsafe thumbnail', normalizedPlacementId);
+  }
+
+  let sortOrder = 0;
+  if (placement.sort_order !== undefined) {
+    if (typeof placement.sort_order === 'object' || typeof placement.sort_order === 'boolean') {
+      return invalid('invalid sort_order', normalizedPlacementId);
+    }
+    const rawSortOrder = typeof placement.sort_order === 'string'
+      ? placement.sort_order.trim()
+      : placement.sort_order;
+    if (rawSortOrder === '' || !Number.isFinite(Number(rawSortOrder))) {
+      return invalid('invalid sort_order', normalizedPlacementId);
+    }
+    sortOrder = Number(rawSortOrder);
+  }
+
+  if (placement.featured !== undefined && typeof placement.featured !== 'boolean') {
+    return invalid('invalid featured', normalizedPlacementId);
+  }
+
+  const visibility = placement.visibility === undefined ? 'draft' : placement.visibility;
+  if (typeof visibility !== 'string'
+    || !['draft', 'published', 'hidden'].includes(visibility.trim().toLowerCase())) {
+    return invalid('invalid visibility', normalizedPlacementId);
+  }
+
+  return {
+    placement_id: normalizedPlacementId,
+    asset_id: placement.asset_id.trim(),
+    destination: {
+      type: destinationType,
+      section: destinationSection
+    },
+    display_title: String(placement.display_title || '').trim(),
+    description: String(placement.description || '').trim(),
+    thumbnail,
+    sort_order: sortOrder,
+    featured: placement.featured ?? false,
+    visibility: visibility.trim().toLowerCase()
+  };
+}
+
+function placementToKnowledgeItem(placement = {}, asset = {}, section = '') {
+  const owner = asset.owner || asset.owners?.[0] || {};
+  const ownerItem = owner.source_item || {};
+  const type = normalizeMediaType(asset.type) || asset.type || 'external';
+  const target = String(asset.target || '').trim();
+  const thumbnail = String(placement.thumbnail || owner.thumbnail || ownerItem.thumbnail || ownerItem.image || 'assets/profile.jpg').trim();
+  return {
+    id: placement.placement_id,
+    slug: placement.placement_id,
+    placement_id: placement.placement_id,
+    asset_id: placement.asset_id,
+    _placement: true,
+    _section: 'knowledge',
+    section: 'knowledge',
+    knowledge_section: section,
+    title: placement.display_title || owner.title || ownerItem.title || 'Knowledge Media',
+    subtitle: ownerItem.subtitle || '',
+    category: knowledgePlacementSections[section],
+    style: 'Knowledge',
+    description: placement.description || owner.description || ownerItem.description || '',
+    image: thumbnail,
+    thumbnail,
+    type,
+    target,
+    url: type === 'heyzine' || type === 'external' ? target : '',
+    pdf: type === 'pdf' ? target : '',
+    video: type === 'video' ? target : '',
+    panorama: type === 'panorama' || type === 'pano2vr' ? target : '',
+    gallery: type === 'gallery' ? [target] : [],
+    viewer_style: type === 'pdf' ? (asset.viewer_style || 'standard') : '',
+    featured: Boolean(placement.featured),
+    sort_order: Number(placement.sort_order || 0),
+    status: normalizeStatus(placement.visibility || 'draft'),
+    tags: ['knowledge', section, type],
+    asset_owner: owner,
+    derived: true
+  };
+}
+
+async function getKnowledgePlacementItems(legacyItems = [], options = {}) {
+  const localMode = options.localMode ?? isRuntimeLocalhost();
+  const placements = options.placements || await getPlacements();
+  const index = options.assetIndex || await buildRuntimeAssetIndex(options);
+  const placementItems = [];
+
+  for (const rawPlacement of placements) {
+    const placement = validatePlacementForRuntime(rawPlacement);
+    if (!placement) continue;
+    if (!placementIsVisible(placement, localMode)) continue;
+    const section = placement.destination.section;
+    const asset = await resolveAssetByIdRuntime(placement.asset_id, { index });
+    if (!asset) continue;
+    placementItems.push(placementToKnowledgeItem(placement, asset, section));
+  }
+
+  const result = [...legacyItems];
+  placementItems.forEach((placementItem) => {
+    const placementType = normalizeMediaType(placementItem.type) || placementItem.type;
+    const placementTargetKey = `${placementType}:${normalizeAssetTarget(placementItem.target)}`;
+    const duplicateIndex = result.findIndex((item) => {
+      const type = detectMediaType(item, 'knowledge');
+      const target = getMediaTarget(item, type, 'knowledge');
+      const itemAssetId = String(item.asset_id || '').trim();
+      return (itemAssetId && itemAssetId === placementItem.asset_id)
+        || `${type}:${normalizeAssetTarget(target)}` === placementTargetKey;
+    });
+    if (duplicateIndex >= 0) result.splice(duplicateIndex, 1);
+    result.push(placementItem);
+  });
+
+  return result.sort((a, b) => Number(a.sort_order || 0) - Number(b.sort_order || 0));
+}
+
 function searchResultLabel(item = {}, source = '', mediaType = '') {
   if (isProjectSection(source)) return 'Project';
   if (source === 'documents' || mediaType === 'pdf' || mediaType === 'heyzine') return mediaType === 'heyzine' ? 'Flipbook' : 'PDF';
@@ -865,6 +1217,7 @@ async function loadSearchItemsForSource(source) {
   if (source === 'documents') return getAggregatedAssets('documents', items);
   if (source === 'panorama') return getAggregatedAssets('panorama', items);
   if (source === 'videos') return getAggregatedAssets('videos', items);
+  if (source === 'knowledge') return getKnowledgePlacementItems(items);
   return items;
 }
 
@@ -990,6 +1343,12 @@ window.ArchMediaCore = {
   createStandaloneAsset,
   assetToRenderableItem,
   getAggregatedAssets,
+  getPlacements,
+  buildRuntimeAssetIndex,
+  resolveAssetByIdRuntime,
+  getKnowledgePlacementItems,
+  placementIsVisible,
+  validatePlacementForRuntime,
   isMediaDebugEnabled,
   debugContentItem,
   normalizeMediaType,
